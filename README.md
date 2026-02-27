@@ -16,6 +16,10 @@ I aim to design and build a fully functional 8-bit CPU from scratch.
 - The block diagram is then refined into a rough structural, gate-level representation before being implemented, debugged, and rigorously tested in digital logic simulators such as Logisim Evolution and Falstad.
 - Where possible, I explore multiple design approaches to achieve the same functionality, comparing behavior, complexity, and design trade-offs before finalizing an implementation. 
 
+## ⚙️ Implementation Stack
+![Verilog](https://img.shields.io/badge/Verilog-FFEA00?style=for-the-badge&logoColor=black)
+![Logisim Circuits](https://img.shields.io/badge/Logisim%20Circuits-00C853?style=for-the-badge)
+
 ## ✅ Modules Validated  
 - [Clock Module](CLOCK)
 - [Registers](registers_AND_bus)  
