@@ -1,7 +1,7 @@
 # 🏗️ 8-Bit Computer  
 
 <p align="center">
-  <img src="System_Integration/Images/System-Integration.png" 
+  <img src="System_Integration/Video/System-Performing-Arithmetic.gif" 
        width="1200"/>
   <br>
   <sub></b> ⚙️ System Integration - Registers, Memory, ALU, Program Counter and Display Connected
