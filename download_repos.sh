@@ -37,9 +37,9 @@ download_zip() {
     echo -e "\n${CYAN}[>>] Downloading ${name} ...${RESET}"
 
     if [ "$DOWNLOADER" = "curl" ]; then
-        curl -L -o "$out" "$url" --progress-bar
+        curl -L -o "$out" "$url" --silent
     else
-        wget -O "$out" "$url" -q --show-progress
+        wget -O "$out" "$url" -q
     fi
 
     if [ $? -eq 0 ]; then
