@@ -2,10 +2,7 @@
 setlocal enabledelayedexpansion
 title KARAN-D05 - Repo Downloader
 
-:: ─────────────────────────────────────────
-::  Repo list
-:: ─────────────────────────────────────────
-set "REPO[1]=Computing_Machinery_from_Scrath"
+set "REPO[1]=Computing_Machinery_from_Scratch"
 set "REPO[2]=Assembler"
 set "REPO[3]=Gate-Level-Perceptron"
 set "REPO[4]=8-Bit-Computer"
@@ -19,7 +16,7 @@ echo ============================================
 echo   KARAN-D05  ^|  Repository Downloader
 echo ============================================
 echo.
-echo   1.  Computing_Machinery_from_Scrath
+echo   1.  Computing_Machinery_from_Scratch
 echo   2.  Assembler
 echo   3.  Gate-Level-Perceptron
 echo   4.  8-Bit-Computer
@@ -65,7 +62,7 @@ for %%T in (%CHOICE%) do (
         curl -L -o "!OUT_FILE!" "!ZIP_URL!" --silent
 
         if !ERRORLEVEL! EQU 0 (
-            echo  Download complete. Saved as !OUT_FILE!
+            echo  Done. Saved as !OUT_FILE!
             set /a DOWNLOADED+=1
         ) else (
             echo  Failed to download !RNAME!. Check your internet connection.
