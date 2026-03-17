@@ -65,15 +65,15 @@ Each module will have its own folder containing:
 
 ## ⬇️ Download This Repository
 
-### Windows
+### 🪟 Windows
 Download → [download_repos.bat](./download_repos.bat)
-``` 🪟
+``` 
 Double-click it and pick the repo(s) you want.
 ```
 
-### Linux / macOS
+### 🐧 Linux / macOS
 Download → [download_repos.sh](./download_repos.sh)
-``` 🐧
+``` 
 chmod +x download_repos.sh
 ./download_repos.sh
 ```
