@@ -66,17 +66,19 @@ Each module will have its own folder containing:
 ## ⬇️ Download This Repository
 
 ### Windows
-```bat
-1. Download download_repos.bat
-2. Double-click it
-3. Pick the repo(s) you want
+Download → [download_repos.bat](./download_repos.bat)
+``` 🪟
+Double-click it and pick the repo(s) you want.
 ```
 
 ### Linux / macOS
-```bash
+Download → [download_repos.sh](./download_repos.sh)
+``` 🐧
 chmod +x download_repos.sh
 ./download_repos.sh
 ```
+
+> Always downloads the latest version.
 
 > Always downloads the latest version.
 
