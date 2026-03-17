@@ -44,15 +44,6 @@ download_zip() {
 
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}[OK] Saved as ${out}${RESET}"
-
-        # Auto-unzip
-        echo -e "${CYAN}[>>] Extracting ...${RESET}"
-        if command -v unzip &>/dev/null; then
-            unzip -q "$out" -d "$name" && rm "$out"
-            echo -e "${GREEN}[OK] Extracted to folder: ${name}${RESET}"
-        else
-            echo -e "     unzip not found — ZIP file kept: ${out}"
-        fi
         return 0
     else
         echo -e "${RED}[ERR] Failed to download ${name}. Check your connection.${RESET}"
