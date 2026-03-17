@@ -73,7 +73,9 @@ Double-click it and pick the repo(s) you want.
 
 ### 🐧 Linux / macOS
 Download → [download_repos.sh](./download_repos.sh)
-``` 
+```
+bash
+
 chmod +x download_repos.sh
 ./download_repos.sh
 ```
