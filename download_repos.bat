@@ -65,19 +65,8 @@ for %%T in (%CHOICE%) do (
         curl -L -o "!OUT_FILE!" "!ZIP_URL!" --silent
 
         if !ERRORLEVEL! EQU 0 (
-            echo  Download complete.
+            echo  Download complete. Saved as !OUT_FILE!
             set /a DOWNLOADED+=1
-
-            echo  Extracting ...
-            powershell -NoProfile -Command ^
-                "Expand-Archive -Path '!OUT_FILE!' -DestinationPath '!RNAME!' -Force" ^
-                2>nul
-            if !ERRORLEVEL! EQU 0 (
-                del "!OUT_FILE!" >nul 2>&1
-                echo  Extracted to folder: !RNAME!
-            ) else (
-                echo  Could not auto-extract. ZIP file kept: !OUT_FILE!
-            )
         ) else (
             echo  Failed to download !RNAME!. Check your internet connection.
             set /a FAILED+=1
