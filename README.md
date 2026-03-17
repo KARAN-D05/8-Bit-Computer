@@ -63,6 +63,13 @@ Each module will have its own folder containing:
 - Document the full design and build process  
 - Share schematics, notes, and experiments for others to learn from
 
+## ⬇️ Download Any of My Repos
+
+**Windows:** Run `download_repos.bat`  
+**macOS/Linux:** Run `chmod +x download_repos.sh && ./download_repos.sh`
+
+A menu will appear - pick which repo(s) you want to download.
+
 ## 📜 License
 - Source code, HDL, and Logisim circuit files are licensed under the MIT License.
 - Documentation, diagrams, images, and PDFs are licensed under Creative Commons Attribution 4.0 (CC BY 4.0).
