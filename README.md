@@ -63,6 +63,22 @@ Each module will have its own folder containing:
 - Document the full design and build process  
 - Share schematics, notes, and experiments for others to learn from
 
+## 🔧 Tool: portmap - Verilog Port Extractor
+
+`portmap` is a lightweight CLI tool that extracts port definitions (`input`, `output`, `inout`) from Verilog modules and presents them in a clean table or Markdown format.
+
+### 🔗 Source
+https://github.com/KARAN-D05/Computing_Machinery_from_Scratch/blob/main/portmap.nim
+
+### 📦 Release (Download Binary)
+https://github.com/KARAN-D05/Computing_Machinery_from_Scratch/releases/tag/v1.0.0
+
+### 🚀 Usage
+```bash
+portmap file.v
+portmap file.v --md
+```
+
 ## ⬇️ Download This Repository
 
 ### 🪟 Windows
