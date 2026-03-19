@@ -68,10 +68,10 @@ Each module will have its own folder containing:
 `portmap` is a lightweight CLI tool that extracts port definitions (`input`, `output`, `inout`) from Verilog modules and presents them in a clean table or Markdown format.
 
 ### 🔗 Source
-https://github.com/KARAN-D05/Computing_Machinery_from_Scratch/blob/main/portmap.nim
+https://github.com/KARAN-D05/portmap-HDL/blob/main/portmap.nim
 
 ### 📦 Release (Download Binary)
-https://github.com/KARAN-D05/Computing_Machinery_from_Scratch/releases/tag/v1.0.0
+https://github.com/KARAN-D05/portmap-HDL/releases/tag/v1.0.0
 
 ### 🚀 Usage
 ```bash
