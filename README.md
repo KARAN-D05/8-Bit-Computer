@@ -4,7 +4,7 @@
   <img src="System_Integration/Video/System-Performing-Arithmetic.gif" 
        width="1200"/>
   <br>
-  <sub></b> ⚙️ System Integration - Registers, Memory, ALU, Program Counter and Display Connected
+  <sub></b> ⚙️ System Integration - Registers, Memory, ALU, Program Counter and Display Connected (Performing Addition [A] ← [A] + [B])
 </p>
 
 ## 🧠 About  
