@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# Linux/macOS Repository Downloader
-
 BASE_URL="https://github.com/KARAN-D05"
 RAW_URL="https://raw.githubusercontent.com/KARAN-D05"
 BRANCH="main"
