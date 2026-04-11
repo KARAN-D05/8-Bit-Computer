@@ -1,5 +1,3 @@
-:: Windows Repository Downloader
-
 @echo off
 setlocal enabledelayedexpansion
 title KARAN-D05 - Repo Downloader
