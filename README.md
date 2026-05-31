@@ -19,6 +19,7 @@ I aim to design and build a fully functional 8-bit CPU from scratch.
 ## ⚙️ Implementation Stack
 ![Verilog](https://img.shields.io/badge/Verilog-FFEA00?style=for-the-badge&logoColor=black)
 ![Logisim Circuits](https://img.shields.io/badge/Logisim%20Circuits-00C853?style=for-the-badge)
+![Falstad Analog Circuits](https://img.shields.io/badge/Falstad%20Analog%20Circuits-2196F3?style=for-the-badge)
 
 ## ✅ Modules Validated  
 - [Clock Module](CLOCK)
