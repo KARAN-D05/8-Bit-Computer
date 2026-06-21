@@ -9,4 +9,4 @@
 ![Cocotb](https://img.shields.io/badge/Cocotb-D81B60?style=for-the-badge)
 ![GTKWave](https://img.shields.io/badge/GTKWave-8E24AA?style=for-the-badge)
 ![Yosys](https://img.shields.io/badge/Yosys-F4511E?style=for-the-badge)
-![OpenSTA](https://img.shields.io/badge/OpenSTA-FE2FAA?style=for-the-badge)
+![OpenSTA](https://img.shields.io/badge/OpenSTA-BE2FAA?style=for-the-badge)
