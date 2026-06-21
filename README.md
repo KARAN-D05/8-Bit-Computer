@@ -1,7 +1,7 @@
 # 8Bit-Computer-rtl
 
 ## ⚙️ Implementation Stack
-![Verilog](https://img.shields.io/badge/Verilog-FFEA00?style=for-the-badge&logoColor=black)
+![Verilog](https://img.shields.io/badge/Verilog-FFEA00?style=flat-badge&logoColor=black)
 
 ## 🛠️ Toolchain
 ![Icarus Verilog](https://img.shields.io/badge/Icarus%20Verilog-1E88E5?style=for-the-badge)
