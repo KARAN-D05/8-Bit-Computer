@@ -4,7 +4,7 @@
 <p align="center">
   <img src="images/astable_clk.png" width="600"/>
   <br>
-  <sub><b> Astable Clock - Oscillates between 0 & 1 </sub>
+  <sub><b> Astable Clock - Oscillates between 0 & 1<b> </sub>
 </p>
 
 ## To Run
@@ -14,3 +14,4 @@
 - Select import from text
 - Paste the copied file and press OK
 - Circuit will be imported in the simulator
+- Or download the .txt files on the system and open them in [Falstad Simulator](https://www.falstad.com/circuit/circuitjs.html)
