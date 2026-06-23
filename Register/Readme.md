@@ -4,7 +4,7 @@ An 8-bit(Parameterized) loadable register with asynchronous reset.
 <p align="center">
   <img src="Images/register_waveform.png" width="1000"/>
   <br>
-  <sub>Register Load and Enable Operation</sub>
+  <sub>Register load data only at positive edge of clock </sub>
 </p>
 
 ## Synthesis Results
