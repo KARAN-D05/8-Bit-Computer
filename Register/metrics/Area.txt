@@ -1,6 +1,3 @@
-
-15. Printing statistics.
-
 === A_Register ===
 
    Number of wires:                 66
@@ -17,4 +14,3 @@
      sky130_fd_sc_hd__mux2_1         8
 
    Chip area for module '\A_Register': 370.355200
-
