@@ -1,12 +1,18 @@
+`include timescale 1ns/1ns
+
 module testbench;
 
-  reg [7:0] in;
+  parameter WIDTH = 8;
+
+  reg [WIDTH-1:0] in;
   reg load;
   reg rst;
   reg clk;
-  wire [7:0] out;
+  wire [WIDTH-1:0] out;
 
-  A_Register dut(
+  A_Register #(
+    .WIDTH(WIDTH)
+    dut(
     .in(in),
     .loadA(load),
     .rst(rst),
