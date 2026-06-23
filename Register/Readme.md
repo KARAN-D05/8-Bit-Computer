@@ -66,3 +66,6 @@ Clock Period = 10 ns
 | Metric | Value |
 |----------|----------|
 | Total Power | 39.8 µW |
+| Internal Power  | 38.5 µW   |
+| Switching Power | 1.4 µW   |
+| Leakage Power   | 0.138 nW |
