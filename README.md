@@ -19,3 +19,9 @@ Timing results correspond to constrained static timing analysis using a 10 ns cl
 | ---------- | ---------- | ---------- | ---------- | ---------- |
 | General Purpose Register | 320.3072 µm² | 1.41 ns | ~709 MHz | 39.8 µW |
 | Arithmetic & Logic Unit | 877.0912 µm² |3.21 ns | ~311 MHz | 349 µW |
+
+<p align="center">
+  <img src="ALU/images/alu_synthesis.png" width="1000"/>
+  <br>
+  <sub>ALU Synthesis</sub>
+</p>
