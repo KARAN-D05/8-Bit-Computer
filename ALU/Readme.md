@@ -35,7 +35,7 @@ An 8-bit parameterized combinational Arithmetic Logic Unit (ALU) supporting arit
   <sub>ALU synthesized netlist</sub>
 </p>
 
-Gate-level simulation (GLS) was performed after synthesis and technology mapping to verify functional equivalence between RTL and the synthesized Sky130 implementation.
+Gate-level simulation was performed after synthesis and technology mapping to verify functional equivalence between RTL and the synthesized Sky130 implementation.
 
 ## Synthesis Results
 
