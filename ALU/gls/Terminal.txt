@@ -1,4 +1,3 @@
-VCD info: dumpfile Sim.vcd opened for output.
 time = 0 | a = 00000011 | b = 00000001 | sel = 000 | out = 00000100 | neg = 0 | zero = 0 | agtb = 1 | aeqb = 0 | carry = 0
 time = 5000 | a = 11111111 | b = 00000001 | sel = 000 | out = 00000000 | neg = 0 | zero = 1 | agtb = 1 | aeqb = 0 | carry = 1
 time = 10000 | a = 00000011 | b = 00000001 | sel = 001 | out = 00000010 | neg = 0 | zero = 0 | agtb = 1 | aeqb = 0 | carry = 0
@@ -10,5 +9,3 @@ time = 35000 | a = 11100110 | b = 01111111 | sel = 100 | out = 10011001 | neg = 
 time = 40000 | a = 11111111 | b = 11111111 | sel = 101 | out = 00000000 | neg = 0 | zero = 1 | agtb = 0 | aeqb = 1 | carry = 0
 time = 45000 | a = 11100110 | b = 01111111 | sel = 110 | out = 11100110 | neg = 1 | zero = 0 | agtb = 1 | aeqb = 0 | carry = 0
 time = 50000 | a = 11100110 | b = 01111111 | sel = 111 | out = 01111111 | neg = 0 | zero = 0 | agtb = 1 | aeqb = 0 | carry = 0
-Simulation Complete!
-ALU_tb.v:103: $finish called at 55000 (1ps)
