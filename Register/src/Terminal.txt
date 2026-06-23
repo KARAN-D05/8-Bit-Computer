@@ -1,9 +1,10 @@
-t = 0 | in = 00000000 | load = 0 | enable = 0 | rst = 1 | out = zzzzzzzz
-t = 11 | in = 00000000 | load = 0 | enable = 0 | rst = 0 | out = zzzzzzzz
-t = 21 | in = 11111111 | load = 1 | enable = 0 | rst = 0 | out = zzzzzzzz
-t = 31 | in = 11111111 | load = 0 | enable = 0 | rst = 0 | out = zzzzzzzz
-t = 41 | in = 11111111 | load = 0 | enable = 1 | rst = 0 | out = 11111111
-t = 51 | in = 10101010 | load = 1 | enable = 0 | rst = 0 | out = zzzzzzzz
-t = 61 | in = 10000001 | load = 1 | enable = 1 | rst = 0 | out = 10101010
-t = 65 | in = 10000001 | load = 1 | enable = 1 | rst = 0 | out = 10000001
+t = 0 | in = 00000000 | load = 0 | rst = 1 | out = 00000000
+t = 11 | in = 00000000 | load = 0 | rst = 0 | out = 00000000
+t = 21 | in = 11111111 | load = 1 | rst = 0 | out = 00000000
+t = 25 | in = 11111111 | load = 1 | rst = 0 | out = 11111111
+t = 31 | in = 11111111 | load = 0 | rst = 0 | out = 11111111
+t = 41 | in = 10101010 | load = 1 | rst = 0 | out = 11111111
+t = 45 | in = 10101010 | load = 1 | rst = 0 | out = 10101010
+t = 51 | in = 10000001 | load = 1 | rst = 0 | out = 10101010
+t = 55 | in = 10000001 | load = 1 | rst = 0 | out = 10000001
 Simulation Complete!
