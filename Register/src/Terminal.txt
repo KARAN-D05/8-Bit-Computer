@@ -1,4 +1,3 @@
-VCD info: dumpfile Sim.vcd opened for output.
 t = 0 | in = 00000000 | load = 0 | enable = 0 | rst = 1 | out = zzzzzzzz
 t = 11 | in = 00000000 | load = 0 | enable = 0 | rst = 0 | out = zzzzzzzz
 t = 21 | in = 11111111 | load = 1 | enable = 0 | rst = 0 | out = zzzzzzzz
@@ -8,4 +7,3 @@ t = 51 | in = 10101010 | load = 1 | enable = 0 | rst = 0 | out = zzzzzzzz
 t = 61 | in = 10000001 | load = 1 | enable = 1 | rst = 0 | out = 10101010
 t = 65 | in = 10000001 | load = 1 | enable = 1 | rst = 0 | out = 10000001
 Simulation Complete!
-A_Register_tb.v:69: $finish called at 66 (1s)
