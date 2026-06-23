@@ -2,6 +2,12 @@
 
 An 8-bit(Parameterized) loadable register with asynchronous reset and tri-state output enable.
 
+<p align="center">
+  <img src="Images/register_waveform.png" width="700"/>
+  <br>
+  <sub>Register Load and Enable Operation</sub>
+</p>
+
 ## Synthesis Results
 
 **Technology:** Sky130 HD  
