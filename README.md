@@ -33,7 +33,7 @@ Timing results correspond to constrained static timing analysis using a 10 ns cl
 | [Arithmetic & Logic Unit](ALU) | 877.0912 µm² |3.21 ns | ~311 MHz | 349 µW |
 
 <p align="center">
-  <img src="ALU/images/alu_synthesis.png" width="600"/>
+  <img src="ALU/images/alu_waveform.png" width="600"/>
   <br>
-  <sub>ALU Synthesized netlist</sub>
+  <sub>ALU performing arithmetic & logical operations</sub>
 </p>
