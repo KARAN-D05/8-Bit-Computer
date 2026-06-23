@@ -1,6 +1,12 @@
 # ALU
 An 8-bit parameterized combinational Arithmetic Logic Unit (ALU) supporting arithmetic, logical, and data transfer operations.
 
+<p align="center">
+  <img src="images/alu_waveform.png" width="1000"/>
+  <br>
+  <sub>ALU performing arithmetic and logical operations</sub>
+</p>
+
 ### Supported Operations
 * Addition (ADD)
 * Subtraction (SUB)
@@ -19,12 +25,6 @@ An 8-bit parameterized combinational Arithmetic Logic Unit (ALU) supporting arit
 * CARRY - Carry-out generated during arithmetic operations
 
 Gate-level simulation (GLS) was performed after synthesis and technology mapping to verify functional equivalence between RTL and the synthesized Sky130 implementation.
-
-<p align="center">
-  <img src="images/alu_waveform.png" width="800"/>
-  <br>
-  <sub>ALU performing arithmetic and logical operations</sub>
-</p>
 
 ## Synthesis Results
 
