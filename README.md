@@ -14,5 +14,5 @@ The following table summarizes post-synthesis implementation results obtained us
 Timing results correspond to constrained static timing analysis using a 10 ns clock period, 1 ns input delay, and 1 ns output delay.
 
 | Module | Area | Worst Slack | Estimated Fmax | Total Power @ 100 MHz |
-|----------|----------:|----------:|----------:|----------:|
+| ---------- | ---------- | ---------- | ---------- | ---------- |
 | A Register (8-bit) | 370.3552 µm² | 8.59 ns | ~709 MHz | 41.3 µW |
