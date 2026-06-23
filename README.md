@@ -8,10 +8,14 @@
 ![Yosys](https://img.shields.io/badge/Yosys-Synthesis-43A047?style=flat-square)
 ![OpenSTA](https://img.shields.io/badge/OpenSTA-Static_Timing_Analysis-8E24AA?style=flat-square)
 
-## Physical Characterization
+## 🔬 Physical Characterization
+
+> Technology: Sky130HD
 
 The following table summarizes post-synthesis implementation results obtained using the Sky130 HD standard-cell library.
 Timing results correspond to constrained static timing analysis using a 10 ns clock period, 1 ns input delay, and 1 ns output delay.
+
+### 📊 Implementation Metrics Comparison
 
 | Module | Area | Worst Slack | Estimated Fmax | Total Power @ 100 MHz |
 | ---------- | ---------- | ---------- | ---------- | ---------- |
