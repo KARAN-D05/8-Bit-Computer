@@ -78,7 +78,7 @@ module testbench;
   @(negedge clk);
   #1;
 
-  // Test wrap-around
+  // test wrap-around
   in   = 8'hFF;
   load = 1;
 
