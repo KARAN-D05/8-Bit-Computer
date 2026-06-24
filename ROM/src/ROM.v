@@ -1,6 +1,6 @@
 module ROM #(
-    parameter MSIZE = 256,
-    parameter IWIDTH = 8
+    parameter MSIZE = 256, // Memory Size
+    parameter IWIDTH = 8   // Instruction Width
 ) (
     input [$clog2(MSIZE)-1:0] addr,
     output [IWIDTH-1:0] out
