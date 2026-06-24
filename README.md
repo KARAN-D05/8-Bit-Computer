@@ -20,7 +20,7 @@ Timing results correspond to constrained static timing analysis using a 10 ns cl
 | [General Purpose Registers](Register) | 320.3072 µm² | 1.41 ns | ~709 MHz | 39.8 µW |
 | [Arithmetic and Logic Unit](ALU) | 877.0912 µm² |3.21 ns | ~311 MHz | 349 µW |
 | [Program Counter](PC) | 391.6256 µm² | 1.36 ns | ~735.29 MHz | 44.2 µW |
-| [ROM](ROM) | 2277.184 µm² | 2.85 | ~351 MHz | 888 µW |
+| [ROM (256x8)](ROM) | 2277.184 µm² | 2.85 | ~351 MHz | 888 µW |
 
 <p align="center">
   <img src="ALU/images/alu_waveform.png" width="800"/>
