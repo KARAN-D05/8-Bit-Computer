@@ -1,0 +1,14 @@
+VCD info: dumpfile Sim.vcd opened for output.
+t = 0 | addr =   0 | in = 00000000 | write = 0 | out = xxxxxxxx
+t = 11000 | addr =  10 | in = 10101010 | write = 1 | out = xxxxxxxx
+t = 15000 | addr =  10 | in = 10101010 | write = 1 | out = 10101010
+t = 21000 | addr =  10 | in = 10101010 | write = 0 | out = 10101010
+t = 41000 | addr =  20 | in = 01010101 | write = 1 | out = xxxxxxxx
+t = 45000 | addr =  20 | in = 01010101 | write = 1 | out = 01010101
+t = 51000 | addr =  20 | in = 01010101 | write = 0 | out = 01010101
+t = 71000 | addr =  10 | in = 11111111 | write = 1 | out = 10101010
+t = 75000 | addr =  10 | in = 11111111 | write = 1 | out = 11111111
+t = 81000 | addr =  10 | in = 11111111 | write = 0 | out = 11111111
+t = 101000 | addr =  30 | in = 11111111 | write = 0 | out = xxxxxxxx
+Simulation Complete!
+RAM_tb.v:93: $finish called at 106000 (1ps)

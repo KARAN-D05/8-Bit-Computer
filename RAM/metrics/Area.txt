@@ -1,0 +1,32 @@
+
+13. Printing statistics.
+
+=== RAM ===
+
+   Number of wires:               9984
+   Number of wire bits:          20785
+   Number of public wires:         261
+   Number of public wire bits:    2074
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               7206
+     sky130_fd_sc_hd__a21oi_1      624
+     sky130_fd_sc_hd__and2_0        10
+     sky130_fd_sc_hd__and3_1         1
+     sky130_fd_sc_hd__and3b_1        8
+     sky130_fd_sc_hd__dfxtp_1     2048
+     sky130_fd_sc_hd__lpflow_inputiso1p_1      4
+     sky130_fd_sc_hd__mux2i_1       72
+     sky130_fd_sc_hd__mux4_2       656
+     sky130_fd_sc_hd__nand2_1     1618
+     sky130_fd_sc_hd__nand2b_1       4
+     sky130_fd_sc_hd__nand3_1        4
+     sky130_fd_sc_hd__nand3b_1       8
+     sky130_fd_sc_hd__nor2_1       685
+     sky130_fd_sc_hd__nor2b_1        4
+     sky130_fd_sc_hd__nor3_1        32
+     sky130_fd_sc_hd__o21ai_0     1428
+
+   Chip area for module '\RAM': 75862.758400
+

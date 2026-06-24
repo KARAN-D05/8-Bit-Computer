@@ -1,0 +1,29 @@
+Startpoint: write (input port clocked by clk)
+Endpoint: _15001_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   0.00    0.00   clock network delay (ideal)
+   1.00    1.00 v input external delay
+   0.00    1.00 v write (in)
+   3.17    4.17 ^ _09748_/Y (sky130_fd_sc_hd__nand2_1)
+   0.34    4.51 v _14066_/Y (sky130_fd_sc_hd__o21ai_0)
+   0.00    4.51 v _15001_/D (sky130_fd_sc_hd__dfxtp_1)
+           4.51   data arrival time
+
+  10.00   10.00   clock clk (rise edge)
+   0.00   10.00   clock network delay (ideal)
+   0.00   10.00   clock reconvergence pessimism
+          10.00 ^ _15001_/CLK (sky130_fd_sc_hd__dfxtp_1)
+  -0.30    9.70   library setup time
+           9.70   data required time
+---------------------------------------------------------
+           9.70   data required time
+          -4.51   data arrival time
+---------------------------------------------------------
+           5.18   slack (MET)
+
+
