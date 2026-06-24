@@ -4,7 +4,7 @@ An 8-bit parameterized combinational Read-Only Memory (ROM) with 256 addressable
 The ROM outputs instruction/data corresponding to the supplied address and is intended for program storage within the processor architecture.
 
 <p align="center">
-  <img src="images/rom_waveform.png" width="800"/>
+  <img src="images/rom_waveform.png" width="1000"/>
   <br>
   <sub>ROM outputting instructions based on address</sub>
 </p>
