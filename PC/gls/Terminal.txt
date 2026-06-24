@@ -1,0 +1,23 @@
+VCD info: dumpfile Sim.vcd opened for output.
+t = 0 | out = 00000000 | in = 00000000 | load = 0 | rst = 1
+t = 11000 | out = 00000000 | in = 00000000 | load = 0 | rst = 0
+t = 15000 | out = 00000001 | in = 00000000 | load = 0 | rst = 0
+t = 25000 | out = 00000010 | in = 00000000 | load = 0 | rst = 0
+t = 35000 | out = 00000011 | in = 00000000 | load = 0 | rst = 0
+t = 41000 | out = 00000011 | in = 01010101 | load = 1 | rst = 0
+t = 45000 | out = 01010101 | in = 01010101 | load = 1 | rst = 0
+t = 51000 | out = 01010101 | in = 01010101 | load = 0 | rst = 0
+t = 55000 | out = 01010110 | in = 01010101 | load = 0 | rst = 0
+t = 65000 | out = 01010111 | in = 01010101 | load = 0 | rst = 0
+t = 71000 | out = 01010111 | in = 10100000 | load = 1 | rst = 0
+t = 75000 | out = 10100000 | in = 10100000 | load = 1 | rst = 0
+t = 81000 | out = 10100000 | in = 10100000 | load = 0 | rst = 0
+t = 85000 | out = 10100001 | in = 10100000 | load = 0 | rst = 0
+t = 95000 | out = 10100010 | in = 10100000 | load = 0 | rst = 0
+t = 101000 | out = 10100010 | in = 11111111 | load = 1 | rst = 0
+t = 105000 | out = 11111111 | in = 11111111 | load = 1 | rst = 0
+t = 111000 | out = 11111111 | in = 11111111 | load = 0 | rst = 0
+t = 115000 | out = 00000000 | in = 11111111 | load = 0 | rst = 0
+t = 125000 | out = 00000001 | in = 11111111 | load = 0 | rst = 0
+Simulation Complete!
+PC_tb.v:93: $finish called at 126000 (1ps)
