@@ -1,25 +1,26 @@
 === PC ===
 
-   Number of wires:                211
-   Number of wire bits:           2045
-   Number of public wires:           5
-   Number of public wire bits:      19
+   Number of wires:                 97
+   Number of wire bits:            218
+   Number of public wires:           6
+   Number of public wire bits:      20
    Number of memories:               0
    Number of memory bits:            0
    Number of processes:              0
-   Number of cells:                 46
-     sky130_fd_sc_hd__a21oi_1        4
-     sky130_fd_sc_hd__a31o_1         2
+   Number of cells:                 56
+     sky130_fd_sc_hd__a21oi_1        2
+     sky130_fd_sc_hd__a22oi_1        6
+     sky130_fd_sc_hd__a2bb2oi_1      1
      sky130_fd_sc_hd__a31oi_1        2
-     sky130_fd_sc_hd__and2_0         1
      sky130_fd_sc_hd__and4_1         1
      sky130_fd_sc_hd__clkinv_1       9
      sky130_fd_sc_hd__dfrtp_1        8
-     sky130_fd_sc_hd__nand2_1        9
+     sky130_fd_sc_hd__lpflow_isobufsrc_1      1
+     sky130_fd_sc_hd__nand2_1       10
+     sky130_fd_sc_hd__nand3_1        2
      sky130_fd_sc_hd__nand4_1        1
-     sky130_fd_sc_hd__nor2_1         1
-     sky130_fd_sc_hd__o21ai_0        5
-     sky130_fd_sc_hd__o31ai_1        2
+     sky130_fd_sc_hd__nor2_1         3
+     sky130_fd_sc_hd__o21ai_0        9
      sky130_fd_sc_hd__xor2_1         1
 
-   Chip area for module '\PC': 391.625600
+   Chip area for module '\PC': 444.176000
