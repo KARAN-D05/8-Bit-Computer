@@ -1,0 +1,6 @@
+t = 0 | addr=  0 | out=a7
+t = 10 | addr=  1 | out=3c
+t = 20 | addr=  2 | out=f1
+t = 30 | addr=  3 | out=52
+t = 40 | addr=  4 | out=89
+t = 50 | addr=  5 | out=d4
