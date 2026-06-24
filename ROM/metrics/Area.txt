@@ -1,5 +1,3 @@
-16. Printing statistics.
-
 === ROM ===
 
    Number of wires:                647
@@ -55,4 +53,3 @@
      sky130_fd_sc_hd__xor2_1         2
 
    Chip area for module '\ROM': 2277.184000
-
