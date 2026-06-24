@@ -1,4 +1,3 @@
-VCD info: dumpfile Sim.vcd opened for output.
 t = 0 | out = 00000000 | in = 00000000 | load = 0 | rst = 1
 t = 11000 | out = 00000000 | in = 00000000 | load = 0 | rst = 0
 t = 15000 | out = 00000001 | in = 00000000 | load = 0 | rst = 0
@@ -19,5 +18,3 @@ t = 105000 | out = 11111111 | in = 11111111 | load = 1 | rst = 0
 t = 111000 | out = 11111111 | in = 11111111 | load = 0 | rst = 0
 t = 115000 | out = 00000000 | in = 11111111 | load = 0 | rst = 0
 t = 125000 | out = 00000001 | in = 11111111 | load = 0 | rst = 0
-Simulation Complete!
-PC_tb.v:93: $finish called at 126000 (1ps)
