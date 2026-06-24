@@ -19,7 +19,7 @@ Timing results correspond to constrained static timing analysis using a 10 ns cl
 | ---------- | ---------- | ---------- | ---------- | ---------- |
 | [General Purpose Registers](Register) | 320.3072 µm² | 1.41 ns | ~709 MHz | 39.8 µW |
 | [Arithmetic and Logic Unit](ALU) | 877.0912 µm² |3.21 ns | ~311 MHz | 349 µW |
-| [Program Counter](PC) | 391.6256 µm² | 1.36 ns | ~735.29 MHz | 44.2 µW |
+| [Program Counter](PC) | 444.176 µm² | 1.78 ns | ~561.79 MHz | 48.1 µW |
 | [ROM (256x8)](ROM) | 2277.184 µm² | 2.85 | ~351 MHz | 888 µW |
 | [RAM (256x8)](RAM) | 75862.7584 µm² | 5.18 ns | ~208 MHz | 9.88 mW |
 
