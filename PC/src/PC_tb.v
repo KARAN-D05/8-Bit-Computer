@@ -4,18 +4,21 @@ module testbench;
 
   parameter WIDTH = 8;
 
-  reg [WIDTH-1:0] in;
-  reg load;
-  reg rst;
   reg clk;
+  reg rst;
+  reg load;
+  reg en;
+  reg [WIDTH-1:0] in;
   wire [WIDTH-1:0] out;
 
-  PC # ( .WIDTH(WIDTH)
+  PC #(
+    .WIDTH(WIDTH)
   ) dut (
-    .in(in),
-    .load(load),
-    .rst(rst),
     .clk(clk),
+    .rst(rst),
+    .load(load),
+    .en(en),
+    .in(in),
     .out(out)
   );
 
@@ -24,77 +27,94 @@ module testbench;
 
   initial begin
 
-  $monitor("t = %0t | out = %b | in = %b | load = %b | rst = %b", $time, out, in, load, rst);
+    $monitor(
+      "t = %0t | out = %b | in = %b | enable = %b | load = %b | rst = %b",
+      $time, out, in, en, load, rst
+    );
 
-  $dumpfile("Sim.vcd");
-  $dumpvars(0, testbench);
+    $dumpfile("Sim.vcd");
+    $dumpvars(0, testbench);
 
-  in   = 8'h00;
-  load = 0;
-  rst  = 1;
+    in     = 0;
+    load   = 0;
+    en     = 0;
+    rst    = 1;
 
-  // Reset PC
-  @(negedge clk);
-  #1;
-  rst = 0;
+    // Release reset
+    @(negedge clk);
+    #1;
+    rst = 0;
 
-  // PC should increment
-  @(negedge clk);
-  #1;
+    // Count: 0 -> 1 -> 2 -> 3
+    @(negedge clk);
+    #1;
+    en     = 1;
 
-  @(negedge clk);
-  #1;
+    @(posedge clk);
+    @(posedge clk);
+    @(posedge clk);
 
-  @(negedge clk);
-  #1;
+    // Hold at 3
+    @(negedge clk);
+    #1;
+    en     = 0;
 
-  // Jump to 0x55
-  in   = 8'h55;
-  load = 1;
+    @(posedge clk);
+    @(posedge clk);
 
-  @(negedge clk);
-  #1;
-  load = 0;
+    // Load 0x55
+    @(negedge clk);
+    #1;
+    in   = 8'h55;
+    load = 1;
 
-  // Continue counting from 0x55
-  @(negedge clk);
-  #1;
+    @(negedge clk);
+    #1;
+    load = 0;
 
-  @(negedge clk);
-  #1;
+    // Hold at 0x55
+    @(posedge clk);
 
-  // Jump to 0xA0
-  in   = 8'hA0;
-  load = 1;
+    // Resume counting
+    @(negedge clk);
+    #1;
+    en    = 1;
 
-  @(negedge clk);
-  #1;
-  load = 0;
+    @(posedge clk);
+    @(posedge clk);
 
-  // Continue counting from 0xA0
-  @(negedge clk);
-  #1;
+    // Verify load has priority over increment
+    @(negedge clk);
+    #1;
+    in     = 8'hA0;
+    load   = 1;
+    en   = 1;
 
-  @(negedge clk);
-  #1;
+    @(negedge clk);
+    #1;
+    load = 0;
 
-  // test wrap-around
-  in   = 8'hFF;
-  load = 1;
+    // Count from A0
+    @(posedge clk);
+    @(posedge clk);
 
-  @(negedge clk);
-  #1;
-  load = 0;
+    // Wrap-around test
+    @(negedge clk);
+    #1;
+    in   = 8'hFF;
+    load = 1;
 
-  @(negedge clk);
-  #1;
+    @(negedge clk);
+    #1;
+    load = 0;
 
-  @(posedge clk);
-  #1;
+    @(posedge clk); // FF -> 00
+    @(posedge clk); // 00 -> 01
 
-  $display("Simulation Complete!");
-  $finish;
+    #1;
+    $display("Simulation Complete!");
+    $finish;
 
- end
+  end
 
 endmodule
