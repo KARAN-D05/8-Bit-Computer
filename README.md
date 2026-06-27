@@ -22,7 +22,7 @@ Timing results correspond to constrained static timing analysis using a 10 ns cl
 | [Program Counter](PC) | 444.176 µm² | 1.78 ns | ~561.79 MHz | 48.1 µW |
 | [ROM (256x8)](ROM) | 2277.184 µm² | 2.85 | ~351 MHz | 888 µW |
 | [RAM (256x8)](RAM) | 75862.7584 µm² | 5.18 ns | ~208 MHz | 9.88 mW |
-
+| [Memory Address Register](MAR) | 320.3072 µm² | 1.41 ns | ~709 MHz | 39.8 µW |
 
 <p align="center">
   <img src="ALU/images/alu_waveform.png" width="800"/>
@@ -40,7 +40,7 @@ Timing results correspond to constrained static timing analysis using a 10 ns cl
 | Program Counter      | Instruction address generation                      | ✅     |
 | ROM                  | Program storage subsystem                           | ✅     |
 | RAM                  | Data storage subsystem                              | ✅     |
-| Memory Address Register | Program storage subsystem                        | ⏳     |
+| Memory Address Register | Stores RAM address that needs to be accessed     | ✅     |
 | Instruction Register | Stores current instruction                          | ⏳     |
 | Flags Register       | Stores status flags of computation                  | ⏳     |
 | Control Unit         | Generates control signals                           | ⏳     |
