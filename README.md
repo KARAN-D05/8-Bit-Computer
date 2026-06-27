@@ -8,8 +8,8 @@
 ![OpenSTA](https://img.shields.io/badge/OpenSTA-Static_Timing_Analysis_&_Power_Analysis-8E24AA?style=flat-square)
 
 ## 📚 Documentation
-[Instruction Set Architecture](ISA.md)
-[Computer Organization](Organization.md)
+- [Instruction Set Architecture](ISA.md)
+- [Computer Organization](Organization.md)
 
 ## 🔬 Physical Characterization
 
