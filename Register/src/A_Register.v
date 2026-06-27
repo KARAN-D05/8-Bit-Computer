@@ -1,4 +1,4 @@
-module A_Register #(
+module A_Register # (
     parameter WIDTH = 8 
 )(
     input [WIDTH-1:0] in,
