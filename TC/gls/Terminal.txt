@@ -1,4 +1,3 @@
-VCD info: dumpfile Sim.vcd opened for output.
 t = 0 | rst = 1 | clear = 0 | out = 0 (000)
 t = 11000 | rst = 0 | clear = 0 | out = 0 (000)
 t = 15000 | rst = 0 | clear = 0 | out = 1 (001)
@@ -30,5 +29,3 @@ t = 215000 | rst = 0 | clear = 0 | out = 1 (001)
 t = 225000 | rst = 0 | clear = 0 | out = 2 (010)
 t = 235000 | rst = 0 | clear = 0 | out = 3 (011)
 t = 245000 | rst = 0 | clear = 0 | out = 4 (100)
-Simulation Complete!
-TC_tb.v:106: $finish called at 246000 (1ps)
