@@ -1,3 +1,5 @@
+// Memory Address Register - Stores the address(addr) of RAM location that needs to be addressed: RAM[addr]
+
 module MAR #(
     parameter MSIZE = 256
 ) (
