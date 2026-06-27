@@ -11,7 +11,7 @@ The architecture separates instruction flow from data flow, allowing a clean and
 * 16-bit Instruction Width
 * 256 × 16 Program ROM
 * 256 × 8 Data RAM
-* Control Unit
+* Hardwired Control Unit
 * Multiplexer-Based Internal Data Bus
 * Dedicated Instruction Path
 * Dedicated Address Path
