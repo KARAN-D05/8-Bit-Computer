@@ -167,7 +167,7 @@ initial begin
     t_state = 1;
     #10;
 
-    $display("Simulation Complete!");
+    $display("Simulation Complete");
     $finish;
 
 end
