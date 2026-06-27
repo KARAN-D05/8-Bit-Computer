@@ -1,6 +1,3 @@
-
-11. Printing statistics.
-
 === CU ===
 
    Number of wires:                432
