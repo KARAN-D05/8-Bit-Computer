@@ -13,7 +13,7 @@ This document serves as the architectural specification for the processor's inst
 | STA `<addr>` | Direct Memory | RAM[addr] ← A | 3 |
 | STB `<addr>` | Direct Memory | RAM[addr] ← B | 3 |
 
-> **Note:** Total T-States include the universal Fetch cycle (T0).
+> Total T-States include the universal Fetch cycle (T0).
 
 ### Control Word Format
 
