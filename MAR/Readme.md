@@ -40,11 +40,11 @@ No input/output timing constraints applied.
 ### Scenario 2: Constrained Timing
 
 Timing constraints:
-
-- Input Delay = 1 ns
-- Output Delay = 1 ns
-- Clock Period = 10 ns
-
+```
+Input Delay = 1 ns
+Output Delay = 1 ns
+Clock Period = 10 ns
+```
 | Metric | Value |
 |--------|-------:|
 | Clock Period | 10 ns |
