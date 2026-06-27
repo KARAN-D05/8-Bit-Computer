@@ -1,0 +1,18 @@
+10. Printing statistics.
+
+=== MAR ===
+
+   Number of wires:                 55
+   Number of wire bits:             69
+   Number of public wires:           5
+   Number of public wire bits:      19
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                 24
+     sky130_fd_sc_hd__clkinv_1       8
+     sky130_fd_sc_hd__dfrtp_1        8
+     sky130_fd_sc_hd__mux2_1         8
+
+   Chip area for module '\MAR': 320.307200
+
