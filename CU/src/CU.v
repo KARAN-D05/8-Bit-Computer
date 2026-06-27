@@ -1,3 +1,5 @@
+// Control Unit
+
 module CU #(
     parameter STATES = 8
 )(
