@@ -4,7 +4,7 @@ Path Group: clk
 Path Type: max
 
   Delay    Time   Description
----------------------------------------------------------
+----------------------------------------------------------
    0.00    0.00   clock clk (rise edge)
    0.00    0.00   clock network delay (ideal)
    0.00    0.00 ^ _168_/CLK (sky130_fd_sc_hd__dfrtp_1)
