@@ -13,6 +13,12 @@ Unlike a microprogrammed controller, all control signals are generated directly 
 * Conditional branch evaluation using processor flags
 * Parameterized T-State width
 
+<p align="center">
+  <img src="images/cu_waveform.png" width="800"/>
+  <br>
+  <sub>Control Unit producing control words for corresponding Opcode and T-State</sub>
+</p>
+
 ## Synthesis Results
 
 **Technology:** Sky130 HD
