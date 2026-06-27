@@ -6,7 +6,7 @@ This document serves as the architectural specification for the processor's inst
 
 | Instruction | Addressing Mode | Operation | Total T-States |
 |-------------|-----------------|-----------|:--------------:|
-| LOAD A <imm> | Immediate | A ← imm | 2 |
+| LOAD A `<imm>` | Immediate | A ← imm | 2 |
 | LOAD B <imm> | Immediate | B ← imm | 2 |
 | LDA <addr> | Direct Memory | A ← RAM[addr] | 3 |
 | LDB <addr> | Direct Memory | B ← RAM[addr] | 3 |
@@ -69,19 +69,19 @@ The processor uses a centralized multiplexer-based shared data bus.
 
 | Instruction | T-State | load_A | load_B | load_PC | enable_PC | Write_RAM | load_MAR | load_FR | load_IR | ALU_sel[2] | ALU_sel[1] | ALU_sel[0] | Bus_Select[2] | Bus_Select[1] | Bus_Select[0] | TC_clear |
 |-------------|------|------|------|-------|---------|---------|--------|-------|-------|----|----|----|----|----|----|--------|
-| LOAD A <imm> | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
+| LOAD A `<imm>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
 | | T1 |1 |0 |0 |0 |0 |0 |0 |0 | 0| 0|0 |1 |0 |0 |1 |
-| LOAD B <imm> | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
+| LOAD B `<imm>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
 | | T1 |0 | 1| 0|0 |0 |0 |0 |0 |0 |0 |0 |1 |0 | 0| 1|
-| LDA <addr> | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
+| LDA `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
 | | T1 |0 | 0| 0|0 |0 |1 |0 | 0| 0|0 |0 |0 | 0| 0| 0|
 | | T2 |1 |0 | 0| 0| 0|0 |0 | 0| 0| 0| 0|0 |1 |1 |1 |
-| LDB <addr> | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
+| LDB `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
 | | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 0|0 |
 | | T2 | 0| 1| 0| 0|0 |0 |0 |0 |0 |0 |0 | 0| 1|1 |1 |
-| STA <addr> | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
+| STA `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
 | | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 0|0 |
-| | T2 |0 | 0| 0| 0|1 |0 | 0| 0|0 | 0| 0| 0| 0| 0|0 |
-| STB <addr> | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
+| | T2 |0 | 0| 0| 0|1 |0 | 0| 0|0 | 0| 0| 0| 0| 0|1 |
+| STB `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
 | | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 0|0 |
-| | T2 |0 | 0| 0| 0|1 |0 | 0| 0|0 | 0| 0| 0| 0| 0|0 |
+| | T2 |0 | 0| 0| 0|1 |0 | 0| 0|0 | 0| 0| 0| 0| 0|1 |
