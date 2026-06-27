@@ -2,7 +2,7 @@
 
 This document serves as the architectural specification for the processor's Instruction Set Architecture (ISA) and Control Unit. It defines the supported instructions, addressing modes, opcode allocation, control word fields, bus encoding, ALU operation encoding, instruction execution timing, and architectural behavior.
 
-# Supported Instructions
+## Supported Instructions
 
 | Instruction    | Addressing Mode | Operation            | Total T-States |
 | -------------- | --------------- | -------------------- | :------------: |
@@ -30,7 +30,7 @@ This document serves as the architectural specification for the processor's Inst
 
 > Total T-States include the universal Fetch cycle (T0).
 
-# Opcode Organization
+## Opcode Organization
 
 The processor supports an 8-bit opcode field, allowing a total of **256 instructions**. The opcode space is divided into fixed banks of 32 instructions to simplify instruction decoding and allow future ISA expansion.
 
@@ -45,7 +45,7 @@ The processor supports an 8-bit opcode field, allowing a total of **256 instruct
 | 192–223      | 0xC0–0xDF | Reserved           |
 | 224–255      | 0xE0–0xFF | Reserved           |
 
-# Control Word Format
+## Control Word Format
 
 The Control Unit generates a **15-bit control word** for each instruction and T-state.
 
@@ -67,7 +67,7 @@ The Control Unit generates a **15-bit control word** for each instruction and T-
 |   1 | Bus_Select[0]  | Bus Source Select               |
 |   0 | TC_clear       | Reset T-State Counter           |
 
-# Bus Source Encoding
+## Bus Source Encoding
 
 The processor uses a centralized multiplexer-based shared data bus.
 
@@ -82,7 +82,7 @@ The processor uses a centralized multiplexer-based shared data bus.
 |       110       | Reserved               |
 |       111       | Reserved               |
 
-# ALU Operation Encoding
+## ALU Operation Encoding
 
 | ALU_sel[2:0] | Operation |
 | :----------: | --------- |
@@ -95,7 +95,7 @@ The processor uses a centralized multiplexer-based shared data bus.
 |      110     | PASS A    |
 |      111     | PASS B    |
 
-### Control Word Table
+## Control Word Table
 
 | Instruction | T-State | load_A | load_B | load_PC | enable_PC | Write_RAM | load_MAR | load_FR | load_IR | ALU_sel[2] | ALU_sel[1] | ALU_sel[0] | Bus_Select[2] | Bus_Select[1] | Bus_Select[0] | TC_clear |
 |-------------|------|------|------|-------|---------|---------|--------|-------|-------|----|----|----|----|----|----|--------|
@@ -116,11 +116,11 @@ The processor uses a centralized multiplexer-based shared data bus.
 | | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 1|0 |
 | | T2 |0 | 0| 0| 0|1 |0 | 0| 0|0 | 0| 0| 0| 0| 0|1 |
 
-# Instruction Encoding
+## Instruction Encoding
 
 The processor uses an 8-bit opcode field resulting in 256 possible instructions.
 
-## Data Transfer
+### Data Transfer
 
 | Instruction    | Addressing Mode | Opcode (Binary) | Opcode (Hex) | Opcode (Decimal) |
 | -------------- | --------------- | :-------------: | :----------: | :--------------: |
@@ -131,7 +131,7 @@ The processor uses an 8-bit opcode field resulting in 256 possible instructions.
 | STA `<addr>`   | Direct Memory   |    `00000101`   |    `0x05`    |         5        |
 | STB `<addr>`   | Direct Memory   |    `00000110`   |    `0x06`    |         6        |
 
-## Arithmetic & Logic
+### Arithmetic & Logic
 
 | Instruction | Opcode (Binary) | Opcode (Hex) | Opcode (Decimal) |
 | ----------- | :-------------: | :----------: | :--------------: |
@@ -144,7 +144,7 @@ The processor uses an 8-bit opcode field resulting in 256 possible instructions.
 | PASS A      |    `00100110`   |    `0x26`    |        38        |
 | PASS B      |    `00100111`   |    `0x27`    |        39        |
 
-## Branch & Control
+### Branch & Control
 
 | Instruction  | Addressing Mode | Opcode (Binary) | Opcode (Hex) | Opcode (Decimal) |
 | ------------ | --------------- | :-------------: | :----------: | :--------------: |
@@ -170,7 +170,7 @@ The processor uses an 8-bit opcode field resulting in 256 possible instructions.
 * For **Direct Memory** instructions, the operand is interpreted as an 8-bit RAM address.
 * For **Branch** instructions, the operand specifies the destination address.
 
-# Flag Register
+## Flag Register
 
 The processor maintains a 5-bit Flag Register.
 
@@ -195,7 +195,7 @@ The Flag Register is updated automatically by every Arithmetic & Logic instructi
 
 > Data Transfer and Branch instructions do **not** modify the Flag Register.
 
-# ISA Summary
+## ISA Summary
 
 | Category           | Number of Instructions |
 | ------------------ | ---------------------: |
