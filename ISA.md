@@ -2,7 +2,7 @@
 
 This document serves as the architectural specification for the processor's instruction set and Control Unit. It defines the supported instructions, addressing modes, control word fields, bus encoding, ALU operation encoding, and instruction execution timing.
 
-# Supported Instructions
+## Supported Instructions
 
 | Instruction | Addressing Mode | Operation | Total T-States |
 |-------------|-----------------|-----------|:--------------:|
@@ -15,7 +15,7 @@ This document serves as the architectural specification for the processor's inst
 
 > **Note:** Total T-States include the universal Fetch cycle (T0).
 
-# Control Word Format
+### Control Word Format
 
 The Control Unit generates a 15-bit control word for each instruction and T-state.
 
@@ -37,7 +37,7 @@ The Control Unit generates a 15-bit control word for each instruction and T-stat
 | 1 | Bus_Select[0] | Bus Source Select |
 | 0 | TC_clear | Reset T-State Counter |
 
-# Bus Source Encoding
+### Bus Source Encoding
 
 The processor uses a centralized multiplexer-based shared data bus.
 
@@ -52,7 +52,7 @@ The processor uses a centralized multiplexer-based shared data bus.
 | 110 | Reserved |
 | 111 | Reserved |
 
-# ALU Operation Encoding
+### ALU Operation Encoding
 
 | ALU_sel[2:0] | Operation |
 |:------------:|-----------|
@@ -65,7 +65,7 @@ The processor uses a centralized multiplexer-based shared data bus.
 | 110 | PASS A |
 | 111 | PASS B |
 
-# Control Word Table
+### Control Word Table
 
 | Instruction | T-State | load_A | load_B | load_PC | enable_PC | Write_RAM | load_MAR | load_FR | load_IR | ALU_sel[2] | ALU_sel[1] | ALU_sel[0] | Bus_Select[2] | Bus_Select[1] | Bus_Select[0] | TC_clear |
 |-------------|------|------|------|-------|---------|---------|--------|-------|-------|----|----|----|----|----|----|--------|
@@ -83,5 +83,5 @@ The processor uses a centralized multiplexer-based shared data bus.
 | | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 0|0 |
 | | T2 |0 | 0| 0| 0|1 |0 | 0| 0|0 | 0| 0| 0| 0| 0|1 |
 | STB `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 0|0 |
+| | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 1|0 |
 | | T2 |0 | 0| 0| 0|1 |0 | 0| 0|0 | 0| 0| 0| 0| 0|1 |
