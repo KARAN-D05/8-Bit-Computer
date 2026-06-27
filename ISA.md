@@ -86,9 +86,9 @@ The processor uses a centralized multiplexer-based shared data bus.
 | | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 1|0 |
 | | T2 |0 | 0| 0| 0|1 |0 | 0| 0|0 | 0| 0| 0| 0| 0|1 |
 
-## Instruction Encoding
+### Instruction Encoding
 
-The processor uses an 8-bit opcode field. The current ISA occupies the first six opcodes, leaving the remaining opcode space reserved for future expansion.
+The processor uses an 8-bit opcode field resulting in 256 possible instructions.
 
 | Instruction | Addressing Mode | Opcode (Binary) | Opcode (Hex) | Opcode (Decimal) |
 |-------------|-----------------|:---------------:|:------------:|:----------------:|
