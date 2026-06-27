@@ -1,4 +1,4 @@
-Startpoint: _42_ (rising edge-triggered flip-flop clocked by clk)
+startpoint: _42_ (rising edge-triggered flip-flop clocked by clk)
 Endpoint: _42_ (rising edge-triggered flip-flop clocked by clk)
 Path Group: clk
 Path Type: max
