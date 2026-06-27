@@ -1,5 +1,3 @@
-13. Printing statistics.
-
 === IR ===
 
    Number of wires:                103
