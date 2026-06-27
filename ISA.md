@@ -69,29 +69,19 @@ The processor uses a centralized multiplexer-based shared data bus.
 
 | Instruction | T-State | load_A | load_B | load_PC | enable_PC | Write_RAM | load_MAR | load_FR | load_IR | ALU_sel[2] | ALU_sel[1] | ALU_sel[0] | Bus_Select[2] | Bus_Select[1] | Bus_Select[0] | TC_clear |
 |-------------|------|------|------|-------|---------|---------|--------|-------|-------|----|----|----|----|----|----|--------|
-| LOAD A <imm> | T0 | 0| 0|0 |1 |0 |0 | 0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 | | | | | | | | | | | | | | | |
-| LOAD B `<imm>` | T0 | | | | | | | | | | | | | | | |
-| | T1 | | | | | | | | | | | | | | | |
-| LDA `<addr>` | T0 | | | | | | | | | | | | | | | |
-| | T1 | | | | | | | | | | | | | | | |
-| | T2 | | | | | | | | | | | | | | | |
-| LDB `<addr>` | T0 | | | | | | | | | | | | | | | |
-| | T1 | | | | | | | | | | | | | | | |
-| | T2 | | | | | | | | | | | | | | | |
-| STA `<addr>` | T0 | | | | | | | | | | | | | | | |
-| | T1 | | | | | | | | | | | | | | | |
-| | T2 | | | | | | | | | | | | | | | |
-| STB `<addr>` | T0 | | | | | | | | | | | | | | | |
-| | T1 | | | | | | | | | | | | | | | |
-| | T2 | | | | | | | | | | | | | | | |
-
-# Design Notes
-
-- Every instruction begins with a universal **Fetch (T0)** stage.
-- The Program Counter and Instruction Register operate simultaneously during Fetch.
-- The Control Unit resets the T-State Counter (`TC_clear`) during the **final execution T-State**, eliminating unnecessary idle cycles.
-- Register transfers occur on the rising clock edge after combinational logic has settled.
-- Immediate instructions utilize the IR operand (`IR[7:0]`) as a direct bus source.
-- Memory operations employ the Memory Address Register (MAR) to provide RAM addressing.
-- The architecture uses a multiplexer-based shared data bus instead of internal tri-state buses for deterministic operation and synthesis compatibility.
+| LOAD A <imm> | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
+| | T1 |1 |0 |0 |0 |0 |0 |0 |0 | 0| 0|0 |1 |0 |0 |1 |
+| LOAD B <imm> | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
+| | T1 |0 | 1| 0|0 |0 |0 |0 |0 |0 |0 |0 |1 |0 | 0| 1|
+| LDA <addr> | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
+| | T1 |0 | 0| 0|0 |0 |1 |0 | 0| 0|0 |0 |0 | 0| 0| 0|
+| | T2 |1 |0 | 0| 0| 0|0 |0 | 0| 0| 0| 0|0 |1 |1 |1 |
+| LDB <addr> | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
+| | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 0|0 |
+| | T2 | 0| 1| 0| 0|0 |0 |0 |0 |0 |0 |0 | 0| 1|1 |1 |
+| STA <addr> | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
+| | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 0|0 |
+| | T2 |0 | 0| 0| 0|1 |0 | 0| 0|0 | 0| 0| 0| 0| 0|0 |
+| STB <addr> | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
+| | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 0|0 |
+| | T2 |0 | 0| 0| 0|1 |0 | 0| 0|0 | 0| 0| 0| 0| 0|0 |
