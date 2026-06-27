@@ -92,8 +92,8 @@ The processor uses an 8-bit opcode field resulting in 256 possible instructions.
 
 | Instruction | Addressing Mode | Opcode (Binary) | Opcode (Hex) | Opcode (Decimal) |
 |-------------|-----------------|:---------------:|:------------:|:----------------:|
-| LOADA `<imm>` | Immediate | `00000001` | `0x01` | 1 |
-| LOADB `<imm>` | Immediate | `00000010` | `0x02` | 2 |
+| LOAD A `<imm>` | Immediate | `00000001` | `0x01` | 1 |
+| LOAD B `<imm>` | Immediate | `00000010` | `0x02` | 2 |
 | LDA `<addr>` | Direct Memory | `00000011` | `0x03` | 3 |
 | LDB `<addr>` | Direct Memory | `00000100` | `0x04` | 4 |
 | STA `<addr>` | Direct Memory | `00000101` | `0x05` | 5 |
