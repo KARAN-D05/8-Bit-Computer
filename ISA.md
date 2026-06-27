@@ -15,7 +15,7 @@ This document serves as the architectural specification for the processor's Inst
 | ADD            | Register        | A ← A + B            |        2       |
 | SUB            | Register        | A ← A − B            |        2       |
 | AND            | Register        | A ← A & B            |        2       |
-| OR             | Register        | A ← A | B            |        2       |
+| OR             | Register        | A ← A v B            |        2       |
 | XOR            | Register        | A ← A ^ B            |        2       |
 | NOT            | Register        | A ← ~A               |        2       |
 | PASS A         | Register        | A ← A                |        2       |
