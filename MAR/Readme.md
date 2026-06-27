@@ -10,7 +10,7 @@ An 8-bit (Parameterized) loadable Memory Address Register with asynchronous rese
 - Holds previous address when load = 0
 
 <p align="center">
-  <img src="Images/mar_waveform.png" width="1000"/>
+  <img src="images/mar_waveform.png" width="1000"/>
   <br>
   <sub>Memory Address Register </sub>
 </p>
