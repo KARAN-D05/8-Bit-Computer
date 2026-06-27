@@ -90,7 +90,7 @@ module testbench;
     @(posedge clk);
     #1;
 
-    $display("Simulation Complete!");
+    $display("Simulation Complete");
     $finish;
 
   end
