@@ -1,3 +1,4 @@
+// Instruction Register
 module IR #(
     parameter IWIDTH = 16
 ) (
