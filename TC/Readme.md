@@ -1,6 +1,6 @@
 # T-State Counter (TC)
 
-A parameterized synchronous T-State Counter used to sequence the execution of instructions in the Control Unit. The counter advances on each positive clock edge and can be reset either through a global asynchronous reset (`rst`) or synchronously cleared (`clear`) by the Control Unit when an instruction completes, returning execution to **T0**.
+A parameterized synchronous T-State Counter used to sequence the execution of instructions in the Control Unit. The counter advances on each positive clock edge and can be reset either through a global asynchronous reset (rst) or synchronously cleared (clear) by the Control Unit when an instruction completes, returning execution to **T0**.
 
 ## Features
 
