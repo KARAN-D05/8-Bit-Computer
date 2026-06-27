@@ -29,6 +29,7 @@ Timing results correspond to constrained static timing analysis using a 10 ns cl
 | [Flags Register](FR) | 200.192 µm² | 1.41 ns | ~709 MHz | 24.9 µW |
 | [Instruction Register](IR) | 640.6144 µm² | 1.41 ns | ~709 MHz | 79.7 µW |
 | [T-State Counter](TC) | 125.12 µm² | 1.38 ns | ~725 MHz | 15.6 µW |
+| [Control Unit](CU) | 359.0944 µm² | 2.29 ns | ~437 MHz | 41.4 µW |
 
 <p align="center">
   <img src="ALU/images/alu_waveform.png" width="800"/>
@@ -50,4 +51,4 @@ Timing results correspond to constrained static timing analysis using a 10 ns cl
 | Flags Register       | Stores status flags of computation                  | ✅     |
 | Instruction Register | Stores current instruction                          | ✅     |
 | T-State Counter      | Tracks the T-state of an instruction                | ✅     |
-| Control Unit         | Generates control signals                           | ⏳     |
+| Control Unit         | Generates control signals                           | ✅     |
