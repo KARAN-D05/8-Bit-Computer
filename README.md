@@ -9,6 +9,7 @@
 
 ## 📚 Documentation
 [Instruction Set Architecture](ISA.md)
+[Computer Organization](Organization.md)
 
 ## 🔬 Physical Characterization
 
