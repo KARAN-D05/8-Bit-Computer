@@ -1,3 +1,4 @@
+// ALU
 module ALU #(
     parameter WIDTH = 8,
     parameter NUM_OPS = 8
