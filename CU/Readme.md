@@ -7,7 +7,7 @@ Unlike a microprogrammed controller, all control signals are generated directly 
 ## Features
 
 * Hardwired combinational control logic
-* 15-bit control word generation
+* 16-bit control word generation
 * Opcode-based instruction decoding
 * T-State based instruction sequencing
 * Conditional branch evaluation using processor flags
