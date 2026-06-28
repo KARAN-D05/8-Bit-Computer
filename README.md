@@ -38,7 +38,7 @@ Timing results correspond to constrained static timing analysis using a 10 ns cl
 | [Control Unit (CU)](CU) | 359.0944 µm² | 2.29 ns | ~437 MHz | 41.4 µW |
 | [Computer](Computer) | 80347.06 µm² | 25.55 ns | ~39 MHz | 8.67 mW |
 
-> Note: The reported RAM area and timing correspond to a behavioral Verilog memory synthesized entirely using Sky130 HD standard cells. Since no dedicated SRAM macro was used, the memory is implemented using > > flip-flops and associated decode/multiplexing logic, making it the dominant contributor to overall chip area and critical path delay.
+> Note: The reported RAM area and timing correspond to a behavioral Verilog memory synthesized entirely using Sky130 HD standard cells. Since no dedicated SRAM macro was used, the memory is implemented using flip-flops and associated decode/multiplexing logic, making it the dominant contributor to overall chip area and critical path delay.
 
 <p align="center">
   <img src="ALU/images/alu_waveform.png" width="800"/>
