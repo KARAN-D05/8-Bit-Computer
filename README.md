@@ -33,7 +33,7 @@ Timing results correspond to constrained static timing analysis using a 10 ns cl
 | [Control Unit](CU) | 359.0944 µm² | 2.29 ns | ~437 MHz | 41.4 µW |
 
 <p align="center">
-  <img src="Computer/images/Computer.png" width="800"/>
+  <img src="Computer/images/Computer.png" width="700"/>
   <br>
   <sub>Computer Organization</sub>
 </p>
