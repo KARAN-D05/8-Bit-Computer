@@ -12,6 +12,12 @@ A parameterized 8-bit stored-program computer designed from the RTL level in Ver
 - [Instruction Set Architecture](ISA.md)
 - [Computer Organization](Organization.md)
 
+<p align="center">
+  <img src="Computer/images/Computer.png" width="700"/>
+  <br>
+  <sub>Computer Organization</sub>
+</p>
+
 ## 🔬 Physical Characterization
 
 The following table summarizes post-synthesis implementation results obtained using the Sky130 HD standard-cell library.
@@ -33,9 +39,9 @@ Timing results correspond to constrained static timing analysis using a 10 ns cl
 | [Control Unit](CU) | 359.0944 µm² | 2.29 ns | ~437 MHz | 41.4 µW |
 
 <p align="center">
-  <img src="Computer/images/Computer.png" width="700"/>
+  <img src="ALU/images/alu_waveform.png" width="800"/>
   <br>
-  <sub>Computer Organization</sub>
+  <sub>ALU performing Arithmetic & Logical Operations</sub>
 </p>
 
 ## ⚙️ Implemented Modules
