@@ -7,7 +7,7 @@ A parameterized synchronous T-State Counter used to sequence the execution of in
 - Parameterized number of T-states
 - Global asynchronous active-high reset
 - Synchronous clear input for instruction completion
-- Automatically advances to the next T-state every clock cycle
+- Advances on enable to the next T-state every clock cycle
 
 <p align="center">
   <img src="images/tc_waveform.png" width="1000"/>
