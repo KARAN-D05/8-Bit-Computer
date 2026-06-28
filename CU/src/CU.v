@@ -20,9 +20,12 @@ module CU #(
     output reg load_IR,
     output reg [2:0] ALU_sel,
     output reg [2:0] Bus_Select,
-    output reg TC_clear
+    output reg TC_clear,
+    output reg TC_enable
 );
 
+localparam NOP    = 8'h00;
+    
 localparam LOAD_A = 8'h01;
 localparam LOAD_B = 8'h02;
 localparam LDA   = 8'h03;
@@ -48,6 +51,7 @@ localparam JLT   = 8'h45;
 localparam JN    = 8'h46;
 localparam JNC   = 8'h47;
 localparam JNZ   = 8'h48;
+localparam HLT   = 8'h49;
 
   always @(*) begin
 
@@ -64,7 +68,8 @@ localparam JNZ   = 8'h48;
     Bus_Select = 3'b000;
 
     TC_clear   = 0;
-    
+    TC_enable  = 1;
+      
     case (opcode)
 
     LOAD_A: begin
@@ -495,6 +500,36 @@ localparam JNZ   = 8'h48;
 
         endcase
     end
+
+    HLT: begin
+    case (t_state)
+
+        3'd0: begin
+            load_IR   = 1;
+            enable_PC = 1;
+        end
+
+        3'd1: begin
+            TC_enable = 0;
+        end
+
+        endcase
+   end
+
+    NOP: begin
+    case (t_state)
+
+        3'd0: begin
+            load_IR   = 1;
+            enable_PC = 1;
+        end
+
+        3'd1: begin
+            TC_clear = 1;
+        end
+
+    endcase
+end
 
  endcase
      
