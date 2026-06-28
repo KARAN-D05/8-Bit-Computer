@@ -29,6 +29,8 @@ This document serves as the architectural specification for the processor's Inst
 | JN `<addr>`    | Direct          | Jump if Negative = 1 |        2       |
 | JNC `<addr>`   | Direct          | Jump if Carry = 0    |        2       |
 | JNZ `<addr>`   | Direct          | Jump if Zero = 0     |        2       |
+| NOP            | Implied         | No Operation         |        2       |
+| HLT            | Implied         | Halt Processor       |        2       |
 
 > Total T-States include the universal Fetch cycle (T0).
 
@@ -49,25 +51,26 @@ The processor supports an 8-bit opcode field, allowing a total of **256 instruct
 
 ## Control Word Format
 
-The Control Unit generates a **15-bit control word** for each instruction and T-state.
-
+The Control Unit generates a **1-bit control word** for each instruction and T-state.
+6
 | Bit | Control Signal | Description                     |
 | --: | -------------- | ------------------------------- |
-|  14 | load_A         | Load General Purpose Register A |
-|  13 | load_B         | Load General Purpose Register B |
-|  12 | load_PC        | Load Program Counter            |
-|  11 | enable_PC      | Increment Program Counter       |
-|  10 | Write_RAM      | Store Bus Data into RAM         |
-|   9 | load_MAR       | Load Memory Address Register    |
-|   8 | load_FR        | Load Flag Register              |
-|   7 | load_IR        | Load Instruction Register       |
-|   6 | ALU_sel[2]     | ALU Operation Select            |
-|   5 | ALU_sel[1]     | ALU Operation Select            |
-|   4 | ALU_sel[0]     | ALU Operation Select            |
-|   3 | Bus_Select[2]  | Bus Source Select               |
-|   2 | Bus_Select[1]  | Bus Source Select               |
-|   1 | Bus_Select[0]  | Bus Source Select               |
-|   0 | TC_clear       | Reset T-State Counter           |
+|  15 | load_A         | Load General Purpose Register A |
+|  14 | load_B         | Load General Purpose Register B |
+|  13 | load_PC        | Load Program Counter            |
+|  12 | enable_PC      | Increment Program Counter       |
+|  11 | Write_RAM      | Store Bus Data into RAM         |
+|  10 | load_MAR       | Load Memory Address Register    |
+|   9 | load_FR        | Load Flag Register              |
+|   8 | load_IR        | Load Instruction Register       |
+|   7 | ALU_sel[2]     | ALU Operation Select            |
+|   6 | ALU_sel[1]     | ALU Operation Select            |
+|   5 | ALU_sel[0]     | ALU Operation Select            |
+|   4 | Bus_Select[2]  | Bus Source Select               |
+|   3 | Bus_Select[1]  | Bus Source Select               |
+|   2 | Bus_Select[0]  | Bus Source Select               |
+|   1 | TC_clear       | Reset T-State Counter           |
+|   0 | TC_enable      | enable T-State Counter          |
 
 ## Bus Source Encoding
 
@@ -99,58 +102,62 @@ The processor uses a centralized multiplexer-based shared data bus.
 
 ## Control Word Table
 
-| Instruction | T-State | load_A | load_B | load_PC | enable_PC | Write_RAM | load_MAR | load_FR | load_IR | ALU_sel[2] | ALU_sel[1] | ALU_sel[0] | Bus_Select[2] | Bus_Select[1] | Bus_Select[0] | TC_clear |
+| Instruction | T-State | load_A | load_B | load_PC | enable_PC | Write_RAM | load_MAR | load_FR | load_IR | ALU_sel[2] | ALU_sel[1] | ALU_sel[0] | Bus_Select[2] | Bus_Select[1] | Bus_Select[0] |TC_clear|TC_en |
 |-------------|------|------|------|-------|---------|---------|--------|-------|-------|----|----|----|----|----|----|--------|
-| LOAD A `<imm>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |1 |0 |0 |0 |0 |0 |0 |0 | 0| 0|0 |1 |0 |0 |1 |
-| LOAD B `<imm>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |0 | 1| 0|0 |0 |0 |0 |0 |0 |0 |0 |1 |0 | 0| 1|
-| LDA `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |0 | 0| 0|0 |0 |1 |0 | 0| 0|0 |0 |0 | 0| 0| 0|
-| | T2 |1 |0 | 0| 0| 0|0 |0 | 0| 0| 0| 0|0 |1 |1 |1 |
-| LDB `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 0|0 |
-| | T2 | 0| 1| 0| 0|0 |0 |0 |0 |0 |0 |0 | 0| 1|1 |1 |
-| STA `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 0|0 |
-| | T2 |0 | 0| 0| 0|1 |0 | 0| 0|0 | 0| 0| 0| 0| 0|1 |
-| STB `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 1|0 |
-| | T2 |0 | 0| 0| 0|1 |0 | 0| 0|0 | 0| 0| 0| 0| 0|1 |
-| ADD | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |0 |0 |0 |0 | 1| 0|1 |
-| SUB | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |0 |0 |1 |0 | 1| 0|1 |
-| AND | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |0 |1 |0 |0 | 1| 0|1 |
-| OR | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |0 |1 |1 |0 | 1| 0|1 |
-| XOR | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |1 |0 |0 |0 | 1| 0|1 |
-| NOT | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |1 |0 |1 |0 | 1| 0|1 |
-| PASS A | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |1 |1 |0 |0 | 1| 0|1 |
-| PASS B | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |1 |1 |1 |0 | 1| 0|1 |
-| JMP `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |
-| JC `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |
-| JZ `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |
-| JGT `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |
-| JEQ `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |
-| JN `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |
-| JLT `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |
-| JNC `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |
-| JNZ `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |
-| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |
+| LOAD A `<imm>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1|
+| | T1 |1 |0 |0 |0 |0 |0 |0 |0 | 0| 0|0 |1 |0 |0 |1 |1|
+| LOAD B `<imm>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1|
+| | T1 |0 | 1| 0|0 |0 |0 |0 |0 |0 |0 |0 |1 |0 | 0| 1|1 |
+| LDA `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1|
+| | T1 |0 | 0| 0|0 |0 |1 |0 | 0| 0|0 |0 |0 | 0| 0| 0|1 |
+| | T2 |1 |0 | 0| 0| 0|0 |0 | 0| 0| 0| 0|0 |1 |1 |1 |1 |
+| LDB `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1 |
+| | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 0|0 |1 |
+| | T2 | 0| 1| 0| 0|0 |0 |0 |0 |0 |0 |0 | 0| 1|1 |1 |1 |
+| STA `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1|
+| | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 0|0 |1 |
+| | T2 |0 | 0| 0| 0|1 |0 | 0| 0|0 | 0| 0| 0| 0| 0|1 |1 |
+| STB `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1|
+| | T1 |0 |0 |0 |0 | 0| 1|0 |0 |0 |0 |0 |0 | 0| 1|0 |1 |
+| | T2 |0 | 0| 0| 0|1 |0 | 0| 0|0 | 0| 0| 0| 0| 0|1 |1 |
+| ADD | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1 |
+| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |0 |0 |0 |0 | 1| 0|1 |1|
+| SUB | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1|
+| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |0 |0 |1 |0 | 1| 0|1 |1|
+| AND | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1|
+| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |0 |1 |0 |0 | 1| 0|1 |1|
+| OR | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1 |
+| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |0 |1 |1 |0 | 1| 0|1 |1|
+| XOR | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1|
+| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |1 |0 |0 |0 | 1| 0|1 |1|
+| NOT | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1|
+| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |1 |0 |1 |0 | 1| 0|1 |1|
+| PASS A | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1 |
+| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |1 |1 |0 |0 | 1| 0|1 |1|
+| PASS B | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1|
+| | T1 |1 |0 |0 |0 | 0| 0|1 |0 |1 |1 |1 |0 | 1| 0|1 |1 |
+| JMP `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1 |
+| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |1 |
+| JC `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1 |
+| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |1 |
+| JZ `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1 |
+| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |1 |
+| JGT `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1 |
+| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |1 |
+| JEQ `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1 |
+| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |1 |
+| JN `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1 |
+| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |1 |
+| JLT `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1 |
+| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |1 |
+| JNC `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1 |
+| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |1 |
+| JNZ `<addr>` | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1 |
+| | T1 |0 |0 |1 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |1|
+| NOP | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1 |
+| | T1 |0 |0 |0 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |1 |
+| HLT | T0 | 0| 0|0 |1 |0 |0 |0 | 1| 0| 0|0 |0 | 0| 0|0 |1 |
+| | T1 |0 |0 |0 |0 | 0| 0|0 |0 |0 |0 |0 |0 | 0| 0|1 |0 |
 
 > Every Jump Instruction produces same control word but whether control unit emits it depends on flags.
 
@@ -162,6 +169,7 @@ The processor uses an 8-bit opcode field resulting in 256 possible instructions.
 
 | Instruction    | Addressing Mode | Opcode (Binary) | Opcode (Hex) | Opcode (Decimal) |
 | -------------- | --------------- | :-------------: | :----------: | :--------------: |
+| NOP            | Implied         |    `00000000`   |    `0x00`    |         0        |
 | LOAD A `<imm>` | Immediate       |    `00000001`   |    `0x01`    |         1        |
 | LOAD B `<imm>` | Immediate       |    `00000010`   |    `0x02`    |         2        |
 | LDA `<addr>`   | Direct Memory   |    `00000011`   |    `0x03`    |         3        |
@@ -195,6 +203,7 @@ The processor uses an 8-bit opcode field resulting in 256 possible instructions.
 | JN `<addr>`  | Direct          |    `01000110`   |    `0x46`    |        70        |
 | JNC `<addr>` | Direct          |    `01000111`   |    `0x47`    |        71        |
 | JNZ `<addr>` | Direct          |    `01001000`   |    `0x48`    |        72        |
+| HLT          | Implied         |    `01001001`   |    `0x49`    |        73        |
 
 ## Instruction Format
 
@@ -237,9 +246,10 @@ The Flag Register is updated automatically by every Arithmetic & Logic instructi
 
 ## ISA Summary
 
-| Category           | Number of Instructions |
-| ------------------ | ---------------------: |
-| Data Transfer      |                      6 |
-| Arithmetic & Logic |                      8 |
-| Branch & Control   |                      9 |
-| **Total**          |                 **23** |
+| Category              | Number of Instructions |
+|-----------------------|----------------------:|
+| Data Transfer         | 6 |
+| Arithmetic & Logic    | 8 |
+| Branch & Control      | 9 |
+| Processor Control     | 2 |
+| **Total**             | **25** |
