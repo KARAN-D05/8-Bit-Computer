@@ -15,7 +15,7 @@ This document serves as the architectural specification for the processor's Inst
 | ADD            | Register        | A ← A + B            |        2       |
 | SUB            | Register        | A ← A − B            |        2       |
 | AND            | Register        | A ← A & B            |        2       |
-| OR             | Register        | A ← A v B            |        2       |
+| OR             | Register        | A ← A  OR B          |        2       |
 | XOR            | Register        | A ← A ^ B            |        2       |
 | NOT            | Register        | A ← ~A               |        2       |
 | PASS A         | Register        | A ← A                |        2       |
@@ -51,7 +51,7 @@ The processor supports an 8-bit opcode field, allowing a total of **256 instruct
 
 ## Control Word Format
 
-The Control Unit generates a **1-bit control word** for each instruction and T-state.
+The Control Unit generates a **16-bit control word** for each instruction and T-state.
 6
 | Bit | Control Signal | Description                     |
 | --: | -------------- | ------------------------------- |
@@ -218,6 +218,7 @@ The processor uses an 8-bit opcode field resulting in 256 possible instructions.
 * For **Immediate** instructions, the operand is interpreted as an 8-bit constant.
 * For **Direct Memory** instructions, the operand is interpreted as an 8-bit RAM address.
 * For **Branch** instructions, the operand specifies the destination address.
+* For **Implied** instructions (NOP and HLT), the operand field is ignored.
 
 ## Flag Register
 
@@ -248,8 +249,7 @@ The Flag Register is updated automatically by every Arithmetic & Logic instructi
 
 | Category              | Number of Instructions |
 |-----------------------|----------------------:|
-| Data Transfer         | 6 |
+| Data Transfer         | 7 |
 | Arithmetic & Logic    | 8 |
-| Branch & Control      | 9 |
-| Processor Control     | 2 |
+| Branch & Control      | 10 |
 | **Total**             | **25** |
