@@ -1,3 +1,4 @@
+// Read Only Memory
 module ROM #(
     parameter MSIZE = 256,
     parameter IWIDTH = 8
