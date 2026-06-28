@@ -1,3 +1,4 @@
+// B Register 
 module B_Register #(
     parameter WIDTH = 8 
 )(
