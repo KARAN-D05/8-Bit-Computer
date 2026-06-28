@@ -1,3 +1,4 @@
+// Bus-Output-Select-Mux
 module BusMux #(
     parameter WIDTH = 8
 )(
