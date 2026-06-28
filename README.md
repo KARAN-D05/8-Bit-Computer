@@ -10,7 +10,7 @@ A parameterized 8-bit stored-program computer designed from the RTL level in Ver
 
 ## 🧩 Computer System Organization
 <p align="center">
-  <img src="Computer/images/Computer.png" width="800"/>
+  <img src="Computer/images/Computer_org.png" width="800"/>
 </p>
 
 ## 📚 Documentation
