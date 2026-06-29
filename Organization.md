@@ -2,8 +2,6 @@
 
 The processor follows a **Harvard architecture** with physically separate instruction and data memories. Instruction fetch, memory addressing, computation, and control are organized into dedicated datapaths, while data movement between computational units is performed through a centralized multiplexer-based internal data bus.
 
-The architecture separates instruction flow from data flow, allowing a clean and modular organization that closely follows synchronous register-transfer principles.
-
 <p align="center">
   <img src="Computer/images/Computer_org.png" width="700"/>
   <br>
@@ -139,6 +137,7 @@ and generates the complete processor control word consisting of:
 * ALU Operation Select
 * Bus Source Select
 * T-State Counter Clear
+* T-State Counter Enable
 
 Every instruction begins with a universal Fetch cycle followed by instruction-specific execution states.
 
