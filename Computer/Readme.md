@@ -4,6 +4,12 @@ An 8-bit Harvard Architecture stored-program computer implemented entirely in sy
 
 The processor features a custom Instruction Set Architecture (ISA), a hardwired control unit and parameterized components. It supports arithmetic, logical, memory, and conditional branch instructions while demonstrating the complete RTL-to-Gate synthesis flow using the Sky130 HD standard-cell library.
 
+<p align="center">
+  <img src="Computer/images/computer_synthesis.png" width="1000"/>
+  <br>
+  <sub>Computer Synthesis</sub>
+</p>
+
 ## Architecture
 
 The processor consists of the following major hardware blocks:
