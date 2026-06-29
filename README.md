@@ -46,7 +46,7 @@ HLT             ; End program
 ```
 
 <p align="center">
-  <img src="Computer/images/max_waveform.png" width="800"/>
+  <img src="Computer/images/max_waveform.png" width="1000"/>
   <br>
   <sub>RTL simulation of the processor executing the Maximum of Two Numbers program, illustrating instruction fetch, ALU computation, memory operations, and control flow.</sub>
 </p>
