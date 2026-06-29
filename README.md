@@ -17,6 +17,28 @@ A parameterized 8-bit stored-program computer designed from the RTL level in Ver
 - [Instruction Set Architecture](ISA.md)
 - [Computer Organization](Organization.md)
 
+`Max.asm`
+
+```asm
+; Program: Maximum of Two Numbers
+
+LDA 0x08        ; Load first number
+LDB 0x09        ; Load second number
+
+SUB             ; Compute A - B
+JN  STORE_B     ; If A < B, branch to store second number
+
+LDA 0x08        ; Restore first number
+STA 0x0A        ; Store first number as maximum
+JMP END         ; Skip alternate path
+
+STORE_B:
+STB 0x0A        ; Store second number as maximum
+
+END:
+HLT             ; End program
+```
+
 ## 🔬 Physical Characterization
 
 The following table summarizes post-synthesis implementation results obtained using the Sky130 HD standard-cell library.
