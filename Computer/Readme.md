@@ -1,6 +1,6 @@
 # 8-Bit Computer
 
-An 8-bit Harvard Architecture stored-program computer implemented entirely in synthesizable Verilog HDL.
+An 8-bit Harvard Architecture stored-program computer implemented entirely in synthesizable Verilog.
 
 The processor features a custom Instruction Set Architecture (ISA), a hardwired control unit and parameterized components. It supports arithmetic, logical, memory, and conditional branch instructions while demonstrating the complete RTL-to-Gate synthesis flow using the Sky130 HD standard-cell library.
 
