@@ -45,6 +45,14 @@ END:
 HLT             ; End program
 ```
 
+<p align="center">
+  <img src="Computer/images/max_waveform.pn" width="600"/>
+  <br>
+  <sub>RTL simulation of the processor executing the Maximum of Two Numbers program, illustrating instruction fetch, ALU computation, memory operations, and control flow.</sub>
+</p>
+
+Computer/images/max_waveform.png
+
 ## 🔬 Physical Characterization
 
 The following table summarizes post-synthesis implementation results obtained using the Sky130 HD standard-cell library.
@@ -67,12 +75,6 @@ Timing results correspond to constrained static timing analysis using a 10 ns cl
 | [Computer](Computer) | 80347.06 µm² | 25.55 ns | ~39 MHz | 8.67 mW |
 
 > Note: The reported RAM area and timing correspond to a behavioral Verilog memory synthesized entirely using Sky130 HD standard cells. Since no dedicated SRAM macro was used, the memory is implemented using flip-flops and associated decode/multiplexing logic, making it the dominant contributor to overall chip area and critical path delay.
-
-<p align="center">
-  <img src="ALU/images/alu_waveform.png" width="800"/>
-  <br>
-  <sub>ALU performing Arithmetic & Logical Operations</sub>
-</p>
 
 ## ⚙️ Implemented Modules
 
