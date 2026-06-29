@@ -8,7 +8,7 @@ A parameterized 8-bit stored-program computer designed from the RTL level in Ver
 ![Yosys](https://img.shields.io/badge/Yosys-Synthesis-43A047?style=flat-square)
 ![OpenSTA](https://img.shields.io/badge/OpenSTA-Static_Timing_Analysis_&_Power_Analysis-8E24AA?style=flat-square)
 
-## 🧩 Computer System Organization
+## 🧩 System Organization
 <p align="center">
   <img src="Computer/images/Computer_org.png" width="800"/>
 </p>
