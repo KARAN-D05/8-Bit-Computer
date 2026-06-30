@@ -54,9 +54,9 @@ Demonstrates data movement (`LDA, LDB, STA, STB`), ALU computation (`SUB`), flag
   <sub>RTL simulation of the processor executing the Maximum of Two Numbers program, illustrating instruction fetch, ALU computation, memory operations, and control flow.</sub>
 </p>
 
-## Integer Multiplication
+## ✖️ Integer Multiplication
 
-This program implements unsigned integer multiplication using repeated addition. The multiplicand is accumulated into the result while the multiplier serves as a loop counter, demonstrating iterative computation using arithmetic, conditional branching, and memory operations.
+This program multiplies two unsigned 8-bit values using repeated addition. The multiplicand is stored in RAM address `0x07` and the multiplier stored in RAM address `0x08`** acts as the loop counter. A constant value of 1 is stored inRAM address `0x06` for decrementing the counter, and the accumulated product is written to RAM address `0x0B`.
 
 `Mult.asm`
 
@@ -64,27 +64,27 @@ This program implements unsigned integer multiplication using repeated addition.
 ; Unsigned Integer Multiplication (Repeated Addition)
 
 LOOP:
-LDB ONE              ; Load constant 1
-LDA MULTIPLIER       ; Load loop counter
+LDB 0x06          ; Load constant 1
+LDA 0x08          ; Load multiplier (loop counter)
 
-PASS A               ; Check if counter is zero
-JZ  DONE             ; Finish if multiplication is complete
+PASS A            ; Check if counter is zero
+JZ  DONE          ; Finish if multiplication is complete
 
-SUB                  ; counter = counter - 1
-STA MULTIPLIER       ; Store updated counter
+SUB               ; Decrement counter
+STA 0x08          ; Store updated counter
 
-LDA RESULT           ; Load accumulated result
-LDB MULTIPLICAND     ; Load multiplicand
-ADD                  ; result += multiplicand
-STA RESULT           ; Store updated result
+LDA 0x0B          ; Load accumulated result
+LDB 0x07          ; Load multiplicand
+ADD               ; Add multiplicand to result
+STA 0x0B          ; Store updated result
 
-LDA MULTIPLIER       ; Reload counter
-PASS A               ; Update flags
-JNZ LOOP             ; Repeat until counter reaches zero
+LDA 0x08          ; Reload counter
+PASS A            ; Update status flags
+JNZ LOOP          ; Repeat until counter becomes zero
 
 DONE:
-LDA RESULT           ; Load final result
-HLT                  ; End program
+LDA 0x0B          ; Load final product
+HLT               ; End program
 ```
 Demonstrates Memory operations (`LDA`, `LDB`, `STA`), arithmetic (`ADD`, `SUB`, `PASS A`), status flag evaluation (`JZ`, `JNZ`), iterative control flow, looping, and program termination (`HLT`).
 
