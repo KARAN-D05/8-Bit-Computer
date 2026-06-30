@@ -18,7 +18,7 @@ A parameterized 8-bit stored-program computer designed from the RTL level in Ver
 - [Instruction Set Architecture](ISA.md)
 - [Computer Organization](Organization.md)
 
-## Maximum of Two Numbers
+## ⚖️ Maximum of Two Numbers
 
 This program compares two unsigned 8-bit values stored in RAM address `0x08` and `0x09` and writes the larger value back to RAM address `0x0A`. It demonstrates arithmetic, conditional branching, memory operations, and program control using the processor's custom instruction set.
 
