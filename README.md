@@ -44,19 +44,6 @@ END:
 HLT             ; End program
 ```
 
-` Max.hex `
-```hex
-0308 // LDA 0x08
-0409 // LDB 0x09
-2100 // SUB
-4607 // JN 0x07
-0308 // LDA 0x08
-050A // STA 0x0A
-4008 // JMP 0x08
-060A // STB 0x0A
-4900 // HALT
-```
-
 Demonstrates data movement (`LDA, LDB, STA, STB`), ALU computation (`SUB`), flag-based control flow (`JN`), program control (`JMP`), and processor termination (`HLT`).
 
 > The waveform captures the branch-taken execution path, where the processor skips the alternate instruction sequence after evaluating the Negative flag, demonstrating conditional control flow.
