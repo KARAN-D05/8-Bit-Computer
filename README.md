@@ -113,14 +113,14 @@ This program implements unsigned 2×2 matrix multiplication entirely in software
 | `0x0A` | `0x0B` | `0x0C` | `0x0D` | `0x0E` | `0x0F` | `0x10` | `0x11` | `0x12` | `0x13` |
 
 `Matmul.asm`
-
 ```asm
 ; 2 × 2 Matrix Multiplication
+;For brevity, the repeated-addition multiplication sequence is abstracted as multiply(x, y).
 
 ; Compute C00 = A×E + B×G
-multiply(0x00, 0x04)      ; Compute A × E
+multiply(0x00, 0x04)      ; Compute A×E
 STA 0x08                  ; Store AE
-multiply(0x01, 0x06)      ; Compute B × G
+multiply(0x01, 0x06)      ; Compute B×G
 STA 0x09                  ; Store BG
 LDA 0x08                  ; Load AE
 LDB 0x09                  ; Load BG
@@ -128,9 +128,9 @@ ADD                       ; Compute AE + BG
 STA 0x10                  ; Store C00
 
 ; Compute C01 = A×F + B×H
-multiply(0x00, 0x05)      ; Compute A × F
+multiply(0x00, 0x05)      ; Compute A×F
 STA 0x0A                  ; Store AF
-multiply(0x01, 0x07)      ; Compute B × H
+multiply(0x01, 0x07)      ; Compute B×H
 STA 0x0B                  ; Store BH
 LDA 0x0A                  ; Load AF
 LDB 0x0B                  ; Load BH
@@ -138,9 +138,9 @@ ADD                       ; Compute AF + BH
 STA 0x11                  ; Store C01
 
 ; Compute C10 = C×E + D×G
-multiply(0x02, 0x04)      ; Compute C × E
+multiply(0x02, 0x04)      ; Compute C×E
 STA 0x0C                  ; Store CE
-multiply(0x03, 0x06)      ; Compute D × G
+multiply(0x03, 0x06)      ; Compute D×G
 STA 0x0D                  ; Store DG
 LDA 0x0C                  ; Load CE
 LDB 0x0D                  ; Load DG
@@ -148,9 +148,9 @@ ADD                       ; Compute CE + DG
 STA 0x12                  ; Store C10
 
 ; Compute C11 = C×F + D×H
-multiply(0x02, 0x05)      ; Compute C × F
+multiply(0x02, 0x05)      ; Compute C×F
 STA 0x0E                  ; Store CF
-multiply(0x03, 0x07)      ; Compute D × H
+multiply(0x03, 0x07)      ; Compute D×H
 STA 0x0F                  ; Store DH
 LDA 0x0E                  ; Load CF
 LDB 0x0F                  ; Load DH
