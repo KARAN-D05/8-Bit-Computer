@@ -102,17 +102,13 @@ DONE:
 
 This program implements unsigned 2×2 matrix multiplication entirely in software using the custom ISA. The input matrices are stored in RAM locations `0x00-0x03` and `0x04-0x07`, while the resulting matrix is written to `0x10-0x13`. 
 
-```
-           A                      B                                    A × B
- [ A(0x00)  B(0x01) ]    [ E(0x04)  F(0x05) ]     [ C00 = AE + BG (0x10)  C01 = AF + BH (0x11) ]
- [ C(0x02)  D(0x03) ]    [ G(0x06)  H(0x07) ]     [ C10 = CE + DG (0x12)  C11 = CF + DH (0x13) ]
-```
+ > A = [ A(0x00)  B(0x01) ]   B = [ E(0x04)  F(0x05) ]   A × B = [ C00 = AE + BG (0x10)  C01 = AF + BH (0x11) ]
+ >     [ C(0x02)  D(0x03) ]       [ G(0x06)  H(0x07) ]           [ C10 = CE + DG (0x12)  C11 = CF + DH (0x13) ]
 
 | A | B | C | D | E | F | G | H | AE | BG |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:--:|:--:|
 | `0x00` | `0x01` | `0x02` | `0x03` | `0x04` | `0x05` | `0x06` | `0x07` | `0x08` | `0x09` |
 | AF | BH | CE | DG | CF | DH | C00 | C01 | C10 | C11 |
-|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:---:|:---:|
 | `0x0A` | `0x0B` | `0x0C` | `0x0D` | `0x0E` | `0x0F` | `0x10` | `0x11` | `0x12` | `0x13` |
 
 `Matmul.asm`
