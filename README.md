@@ -98,7 +98,7 @@ DONE:
   <sub>RTL simulation of the processor executing the Multiplication program, illustrating iterative execution until final product is produced.</sub>
 </p>
 
-## 🔢 2×2 Unsigned Matrix Multiplication
+## 🔢 2×2 Matrix Multiplication
 
 This program implements unsigned 2×2 matrix multiplication entirely in software using the custom ISA. The input matrices are stored in RAM locations `0x00-0x03` and `0x04-0x07`, while the resulting matrix is written to `0x10-0x13`. 
 ```
@@ -115,7 +115,7 @@ This program implements unsigned 2×2 matrix multiplication entirely in software
 `Matmul.asm`
 
 ```asm
-; Compute C00 = A×E + B×G
+; 2 × 2 Matrix Multiplication
 
 multiply(0x00, 0x04)      ; Compute A × E
 STA 0x08                  ; Store AE
@@ -128,12 +128,39 @@ LDB 0x09                  ; Load BG
 ADD                       ; Compute AE + BG
 STA 0x10                  ; Store C00
 
-; Repeat the same sequence for:
-; C01 = A×F + B×H  → 0x11
-; C10 = C×E + D×G  → 0x12
-; C11 = C×F + D×H  → 0x13
+multiply(0x00, 0x05)      ; Compute A × F
+STA 0x0A                  ; Store AF
 
-; Load output matrix
+multiply(0x01, 0x07)      ; Compute B × H
+STA 0x0B                  ; Store BH
+
+LDA 0x0A                  ; Load AF
+LDB 0x0B                  ; Load BH
+ADD                       ; Compute AF + BH
+STA 0x11                  ; Store C01
+
+multiply(0x02, 0x04)      ; Compute C × E
+STA 0x0C                  ; Store CE
+
+multiply(0x03, 0x06)      ; Compute D × G
+STA 0x0D                  ; Store DG
+
+LDA 0x0C                  ; Load CE
+LDB 0x0D                  ; Load DG
+ADD                       ; Compute CE + DG
+STA 0x12                  ; Store C10
+
+multiply(0x02, 0x05)      ; Compute C × F
+STA 0x0E                  ; Store CF
+
+multiply(0x03, 0x07)      ; Compute D × H
+STA 0x0F                  ; Store DH
+
+LDA 0x0E                  ; Load CF
+LDB 0x0F                  ; Load DH
+ADD                       ; Compute CF + DH
+STA 0x13                  ; Store C11
+
 LDA 0x10                  ; Load C00
 LDB 0x11                  ; Load C01
 LDA 0x12                  ; Load C10
