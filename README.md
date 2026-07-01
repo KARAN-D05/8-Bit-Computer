@@ -106,40 +106,31 @@ Demonstrates Memory operations (`LDA`, `LDB`, `STA`), arithmetic (`ADD`, `SUB`, 
 
 This program implements unsigned 2×2 matrix multiplication entirely in software using the custom ISA. The processor has no dedicated hardware multiply instruction; each multiplication is performed through repeated addition, while conditional branches and loops provide the control flow required to execute the complete algorithm.
 
+## 2×2 Unsigned Matrix Multiplication
+
+This program implements unsigned 2×2 matrix multiplication entirely in software using the custom ISA. The input matrices are stored in RAM locations `0x00–0x03` and `0x04–0x07`, while the resulting matrix is written to `0x10–0x13`. Since the processor provides no dedicated hardware multiply instruction, each multiplication is implemented through repeated addition, with conditional branches and loops controlling program execution.
+
 ### Algorithm
 
-```
-C00 = A×E + B×G
-C01 = A×F + B×H
-C10 = C×E + D×G
-C11 = C×F + D×H
-```
+```text
+multiply(x, y):
+    result = 0
+    while x > 0:
+        result += y
+        x -= 1
+    return result
 
-### Example
-
-Input Matrix A
-
-```
-07 09
-0B 0D
-```
-
-Input Matrix B
-
-```
-02 03
-05 07
-```
-
-Expected Output
-
-```
-3B 54
-57 7C
+C00 = multiply(A, E) + multiply(B, G)
+C01 = multiply(A, F) + multiply(B, H)
+C10 = multiply(C, E) + multiply(D, G)
+C11 = multiply(C, F) + multiply(D, H)
 ```
 
 ### Verification
-
+```
+A = [07 09]   B = [02 03]   A × B = [3B 54]
+    [0B 0D]       [05 07]           [57 7C]
+```
 The program was verified in simulation by observing the processor compute each matrix element through repeated-addition multiplication and accumulation. At program completion, the output matrix stored in RAM exactly matches the expected result.
 
 <p align="center">
