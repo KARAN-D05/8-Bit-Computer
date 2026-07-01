@@ -101,9 +101,10 @@ DONE:
 ## 🔢 2×2 Unsigned Matrix Multiplication
 
 This program implements unsigned 2×2 matrix multiplication entirely in software using the custom ISA. The input matrices are stored in RAM locations `0x00-0x03` and `0x04-0x07`, while the resulting matrix is written to `0x10-0x13`. 
-
- > A = [ A(0x00)  B(0x01) ]   B = [ E(0x04)  F(0x05) ]   A × B = [ C00 = AE + BG (0x10)  C01 = AF + BH (0x11) ]
- >     [ C(0x02)  D(0x03) ]       [ G(0x06)  H(0x07) ]           [ C10 = CE + DG (0x12)  C11 = CF + DH (0x13) ]
+```
+ A = [ A  B ]   B = [ E  F ]   A × B = [ C00 = AE + BG  C01 = AF + BH ]
+     [ C  D ]       [ G  H ]           [ C10 = CE + DG  C11 = CF + DH ]
+```
 
 | A | B | C | D | E | F | G | H | AE | BG |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:--:|:--:|
