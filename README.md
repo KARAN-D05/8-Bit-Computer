@@ -102,6 +102,79 @@ Demonstrates Memory operations (`LDA`, `LDB`, `STA`), arithmetic (`ADD`, `SUB`, 
 
 > The example programs demonstrate that algorithms such as Maximum of Two Numbers and Integer Multiplication are implemented entirely in software using the custom ISA rather than dedicated hardware instructions. By combining arithmetic, memory operations, conditional branching, and loops, the processor supports general-purpose algorithmic execution.
 
+## 🔢 2×2 Unsigned Matrix Multiplication
+
+This program implements unsigned 2×2 matrix multiplication entirely in software using the custom ISA. The processor has no dedicated hardware multiply instruction; each multiplication is performed through repeated addition, while conditional branches and loops provide the control flow required to execute the complete algorithm.
+
+### Algorithm
+
+```
+C00 = A×E + B×G
+C01 = A×F + B×H
+C10 = C×E + D×G
+C11 = C×F + D×H
+```
+
+### Memory Layout
+
+| Address | Description |
+|---------:|-------------|
+| `0x00` | A |
+| `0x01` | B |
+| `0x02` | C |
+| `0x03` | D |
+| `0x04` | E |
+| `0x05` | F |
+| `0x06` | G |
+| `0x07` | H |
+| `0x10` | C00 |
+| `0x11` | C01 |
+| `0x12` | C10 |
+| `0x13` | C11 |
+
+### Example
+
+Input Matrix A
+
+```
+07 09
+0B 0D
+```
+
+Input Matrix B
+
+```
+02 03
+05 07
+```
+
+Expected Output
+
+```
+3B 54
+57 7C
+```
+
+### Verification
+
+The program was verified in simulation by observing the processor compute each matrix element through repeated-addition multiplication and accumulation. At program completion, the output matrix stored in RAM exactly matches the expected result.
+
+<p align="center">
+  <img src="images/matrix_multiplication_waveform.png" width="1000">
+</p>
+
+<p align="center">
+<sub>Waveform showing execution of the software-based 2×2 matrix multiplication program. The final values loaded into the A and B registers correspond to the computed output matrix stored at RAM locations <code>0x10</code>–<code>0x13</code>.</sub>
+</p>
+
+### Performance
+
+- **Program Size:** 125 assembly instructions
+- **Execution Time:** ≈ 24 µs @ 100 MHz (10 ns clock period)
+- **Implementation:** Software multiplication via repeated addition (no dedicated multiply hardware)
+
+> This program demonstrates that non-trivial linear algebra can be implemented entirely in software using a minimal instruction set consisting of arithmetic, memory operations, conditional branching, and loops.
+
 ## 🔬 Physical Characterization
 
 The following table summarizes post-synthesis implementation results obtained using the Sky130 HD standard-cell library.
