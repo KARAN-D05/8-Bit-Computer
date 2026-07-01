@@ -102,21 +102,45 @@ DONE:
 
 This program implements unsigned 2×2 matrix multiplication entirely in software using the custom ISA. The input matrices are stored in RAM locations `0x00-0x03` and `0x04-0x07`, while the resulting matrix is written to `0x10-0x13`. 
 
-```asm
-; Matrix Multiplication Algorithm
-
-multiply(x, y):
-    result = 0
-    while x > 0:
-        result += y
-        x -= 1
-    return result
-
-C00 = multiply(A, E) + multiply(B, G)
-C01 = multiply(A, F) + multiply(B, H)
-C10 = multiply(C, E) + multiply(D, G)
-C11 = multiply(C, F) + multiply(D, H)
 ```
+A = [ A(0x00)  B(0x01) ]   B = [ E(0x04)  F(0x05) ]   A × B = [ C00 = AE + BG (0x10)  C01 = AF + BH (0x11) ]
+    [ C(0x02)  D(0x03) ]       [ G(0x06)  H(0x07) ]           [ C10 = CE + DG (0x12)  C11 = CF + DH (0x13) ]
+```
+
+| A | B | C | D | E | F | G | H | AE | BG | AF | BH | CE | DG | CF | DH | C00 | C01 | C10 | C11 |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:---:|:---:|:---:|:---:|
+| `0x00` | `0x01` | `0x02` | `0x03` | `0x04` | `0x05` | `0x06` | `0x07` | `0x08` | `0x09` | `0x0A` | `0x0B` | `0x0C` | `0x0D` | `0x0E` | `0x0F` | `0x10` | `0x11` | `0x12` | `0x13` |
+
+`Matmul.asm`
+
+```asm
+; Compute C00 = A×E + B×G
+
+multiply(0x00, 0x04)      ; Compute A × E
+STA 0x08                  ; Store AE
+
+multiply(0x01, 0x06)      ; Compute B × G
+STA 0x09                  ; Store BG
+
+LDA 0x08                  ; Load AE
+LDB 0x09                  ; Load BG
+ADD                       ; Compute AE + BG
+STA 0x10                  ; Store C00
+
+; Repeat the same sequence for:
+; C01 = A×F + B×H  → 0x11
+; C10 = C×E + D×G  → 0x12
+; C11 = C×F + D×H  → 0x13
+
+; Load output matrix
+LDA 0x10                  ; Load C00
+LDB 0x11                  ; Load C01
+LDA 0x12                  ; Load C10
+LDB 0x13                  ; Load C11
+
+HLT                       ; End program
+```
+
 **Program Source:** [Matmul.hex](Computer/Programs/Matmul.hex)
 
 > This program demonstrates that non-trivial linear algebra can be implemented entirely in software using a minimal instruction set consisting of arithmetic, memory operations, conditional branching, and loops.
