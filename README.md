@@ -25,7 +25,7 @@ This program compares two unsigned 8-bit values stored in RAM address `0x08` and
 `Max.asm`
 
 ```asm
-; Program: Maximum of Two Numbers
+; Maximum of Two Numbers
 
         LDA 0x08        ; Load first number
         LDB 0x09        ; Load second number
