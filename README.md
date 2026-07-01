@@ -44,7 +44,7 @@ END:
         HLT             ; End program
 ```
 
-[Max.hex](Computer/Programs/Max.hex)
+**Program Source:** [Max.hex](Computer/Programs/Max.hex)
 
 Demonstrates data movement (`LDA, LDB, STA, STB`), ALU computation (`SUB`), flag-based control flow (`JN`), program control (`JMP`), and processor termination (`HLT`).
 
@@ -89,7 +89,7 @@ DONE:
     LDA 0x09          ; Load final product
     HLT               ; End program
 ```
-[Mult.hex](Computer/Programs/Mult.hex)
+**Program Source:** [Mult.hex](Computer/Programs/Mult.hex)
 
 > Replacing LDB 0x06 with LOAD B, 0x01 removes one memory access per loop iteration, saving one clock cycle per iteration. Consequently, the optimization scales linearly with the multiplier value, reducing execution time by up to 255 clock cycles (2550 ns at a 10 ns clock period) for an 8-bit multiplier.
 
@@ -123,7 +123,7 @@ C01 = multiply(A, F) + multiply(B, H)
 C10 = multiply(C, E) + multiply(D, G)
 C11 = multiply(C, F) + multiply(D, H)
 ```
-[Matrix_Multiplication.hex](Computer/Programs/Matmul.hex)
+**Program Source:** [Matrix_Multiplication.hex](Computer/Programs/Matmul.hex)
 
 The program was verified in simulation by observing the processor compute each matrix element through repeated-addition multiplication and accumulation. At program completion, the output matrix stored in RAM exactly matches the expected result.
 
