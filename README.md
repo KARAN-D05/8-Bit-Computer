@@ -20,7 +20,7 @@ A parameterized 8-bit stored-program computer designed from the RTL level in Ver
 
 ## ⚖️ Maximum of Two Numbers
 
-This program compares two unsigned 8-bit values stored in RAM address `0x08` and `0x09` and writes the larger value back to RAM address `0x0A`. It demonstrates arithmetic, conditional branching, memory operations, and program control using the processor's custom instruction set.
+This program compares two unsigned 8-bit values stored in RAM address `0x08` and `0x09` and writes the larger value back to RAM address `0x0A`. 
 
 `Max.asm`
 
@@ -104,7 +104,7 @@ Demonstrates Memory operations (`LDA`, `LDB`, `STA`), arithmetic (`ADD`, `SUB`, 
 
 ## 🔢 2×2 Unsigned Matrix Multiplication
 
-This program implements unsigned 2×2 matrix multiplication entirely in software using the custom ISA. The input matrices are stored in RAM locations `0x00-0x03` and `0x04-0x07`, while the resulting matrix is written to `0x10-0x13`. Since the processor provides no dedicated hardware multiply instruction, each multiplication is implemented through repeated addition, with conditional branches and loops controlling program execution.
+This program implements unsigned 2×2 matrix multiplication entirely in software using the custom ISA. The input matrices are stored in RAM locations `0x00-0x03` and `0x04-0x07`, while the resulting matrix is written to `0x10-0x13`. 
 
 ```asm
 ; Matrix Multiplication Algorithm
