@@ -7,7 +7,7 @@ The processor features a custom Instruction Set Architecture (ISA), a hardwired 
 <p align="center">
   <img src="images/computer_synthesis.png" width="1000"/>
   <br>
-  <sub>Yosys Synthesis</sub>
+  <sub>Yosys-Synthesis</sub>
 </p>
 
 ## Architecture
