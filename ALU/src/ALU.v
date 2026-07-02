@@ -29,8 +29,8 @@ module ALU #(
   assign add = a + b;
   assign sub = a - b; 
 
-    assign agtb = (out > b) ? 1 : 0;
-    assign aeqb = (out == b) ? 1 : 0;
+  assign agtb = (out > b) ? 1 : 0;
+  assign aeqb = (out == b) ? 1 : 0;
   assign zero = ~(|out);
   assign neg = out[WIDTH-1];
 
