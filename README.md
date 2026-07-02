@@ -222,6 +222,8 @@ Timing results correspond to constrained static timing analysis using a 10 ns cl
 | T-State Counter      | Tracks the T-state of an instruction                | ✅     |
 | Control Unit         | Generates control signals                           | ✅     |
 
+> The designs are verified using both traditional Verilog testbenches and Cocotb self-checking testbenches.
+
 ## ⬇️ Download This Repository
 
 ### 🪟 Windows
