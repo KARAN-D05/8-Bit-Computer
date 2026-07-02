@@ -1,5 +1,5 @@
-# Register
-Parameterized 8-bit loadable registers with asynchronous reset.
+# General Purpose Register
+Parameterized 8-bit loadable register with asynchronous reset.
 
 <p align="center">
   <img src="Images/register_waveform.png" width="1000"/>
