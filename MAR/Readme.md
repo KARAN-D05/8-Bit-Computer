@@ -22,7 +22,7 @@ An 8-bit (Parameterized) loadable Memory Address Register with asynchronous rese
 
 | Metric | Value |
 |--------|-------:|
-| Area | 320.3072 µm² |
+| Area | 320.3072 µm²|
 
 ## Static Timing Analysis (OpenSTA)
 
