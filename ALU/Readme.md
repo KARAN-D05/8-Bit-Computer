@@ -1,5 +1,6 @@
 # ALU
-An 8-bit parameterized combinational Arithmetic Logic Unit supporting arithmetic, logical, and data transfer operations.
+- An 8-bit parameterized combinational Arithmetic Logic Unit supporting arithmetic, logical, and data transfer operations.
+- Implemented exhaustive Cocotb verification by validating all 328,448 possible input-operation combinations using a Python reference model and self-checking assertions.
 
 <p align="center">
   <img src="images/alu_diagram.png" width="500"/>
