@@ -206,6 +206,15 @@ Timing results correspond to constrained static timing analysis using a 10 ns cl
 
 > Note: The reported RAM area and timing correspond to a behavioral Verilog memory synthesized entirely using Sky130 HD standard cells. Since no dedicated SRAM macro was used, the memory is implemented using flip-flops and associated decode/multiplexing logic, making it the dominant contributor to overall chip area and critical path delay.
 
+## 🔍 Verification
+
+The RTL is verified using both traditional Verilog testbenches and modern Cocotb self-checking testbenches.
+
+Current verification methodology includes:
+- **Directed Testing** - Handcrafted test cases covering reset, load, hold, increment, and control priority.
+- **Random Testing** - Python-generated randomized inputs validated against a software reference model using self-checking assertions.
+- **Exhaustive Testing** - Complete input-space verification for combinational modules such as the ALU by testing every possible input combination.
+
 ## ⚙️ Implemented Modules
 
 | Module               | Description                                         | Status |
