@@ -3,7 +3,7 @@ from cocotb.clock import Clock
 from cocotb.triggers import RisingEdge, Timer
 
 @cocotb.test()
-async def test_load_register(dut):
+async def test_a_register(dut):
 
     cocotb.start_soon(Clock(dut.clk, 10, unit="ns").start())
 
