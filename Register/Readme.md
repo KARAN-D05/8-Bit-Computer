@@ -1,5 +1,5 @@
 # Register
-8-bit(Parameterized) loadable registers with asynchronous reset.
+Parameterized 8-bit loadable registers with asynchronous reset.
 
 <p align="center">
   <img src="Images/register_waveform.png" width="1000"/>
