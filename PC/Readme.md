@@ -2,7 +2,6 @@
 An 8-bit parameterized loadable counter with asynchronous reset used to track instruction addresses during program execution.
 
 ### Features
-* Positive-edge triggered operation
 * Asynchronous reset
 * Automatic address incrementation
 * Supports loading arbitrary addresses for jump operations
