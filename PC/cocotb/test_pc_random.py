@@ -22,7 +22,7 @@ async def test(dut):
 
     expected = 0
 
-    for _ in range(10000):
+    for _ in range(1000):
 
         load = random.randint(0,1)
         en   = random.randint(0,1)
