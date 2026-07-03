@@ -1,6 +1,6 @@
 ## RAM
 
-An 8-bit parameterized Random Access Memory (RAM) with 256 addressable locations.
+An 8-bit parameterized Random Access Memory with 256 addressable locations.
 
 The RAM serves as the processor's working memory and can store variables, intermediate computation results, and final outputs generated during program execution.
 
