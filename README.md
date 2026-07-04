@@ -31,7 +31,7 @@ This program compares two unsigned 8-bit values stored in RAM address `0x08` and
         LDB 0x09        ; Load second number
 
         PASS A          ; Update status Flags
-        JLT  STORE_B    ; If A < B, branch to store second number
+        JLT STORE_B     ; If A < B, branch to store second number
 
         LDA 0x08        ; Restore first number
         STA 0x0A        ; Store first number as maximum
@@ -69,7 +69,7 @@ LOOP:
     LDA 0x08          ; Load multiplier (loop counter)
 
     PASS A            ; Check if counter is zero
-    JZ  DONE          ; Finish if multiplication is complete
+    JZ DONE           ; Finish if multiplication is complete
 
     SUB               ; Decrement counter
     STA 0x08          ; Store updated counter
