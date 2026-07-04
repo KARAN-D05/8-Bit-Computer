@@ -1,5 +1,5 @@
 ## ROM
-An 8-bit parameterized combinational Read-Only Memory (ROM) with 256 addressable locations.
+An 8-bit parameterized combinational Read-Only Memory with 256 addressable locations.
 
 The ROM outputs instruction/data corresponding to the supplied address and is intended for program storage within the processor architecture.
 
