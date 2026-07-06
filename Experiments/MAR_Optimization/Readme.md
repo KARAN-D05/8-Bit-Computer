@@ -88,7 +88,7 @@ These observations should illustrate the practical implications of **Amdahl's La
 *To be completed after implementation
 
 | Benchmark | Case | Instructions | Clock Cycles | Execution Time (10 ns Clock) | Optimized Cycles | Speedup |
-|-----------|------|-------------:|-------------:|-----------------------------:|-----------------:|--------:|
+|-----------|------|-------------|-------------|-----------------------------|-----------------|--------|
 | Maximum | A > B | 7 | 17 | 170 ns | | |
 | Maximum | B > A | 6 | 15 | 150 ns | | |
 | Multiplication | Small Workload | | | | | |
