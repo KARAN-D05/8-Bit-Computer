@@ -1,1 +1,3 @@
-This document records an architectural experiment performed on the completed 8-bit processor. The objective is not to redesign the processor, but to investigate the quantitative effect of a specific microarchitectural optimization inspired by concepts studied in Computer Organization and Design.
+## Experiments
+
+This folder records an architectural experiment performed on the completed 8-bit processor. The objective is not to redesign the processor, but to investigate the quantitative effect of a specific microarchitectural optimization inspired by concepts studied in Computer Organization and Design.
