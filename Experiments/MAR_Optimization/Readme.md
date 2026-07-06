@@ -85,7 +85,7 @@ These observations should illustrate the practical implications of **Amdahl's La
 
 ## Results
 
-*To be completed after implementation
+*To be completed after implementation*
 
 | Benchmark | Case | Dynamic Instructions | Clock Cycles | Optimized Cycles | Speedup |
 |-----------|------|-------------|-------------|-----------------|--------|
