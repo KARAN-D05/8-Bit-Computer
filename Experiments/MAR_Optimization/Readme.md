@@ -115,29 +115,13 @@ The `A > B` path executes one additional unconditional jump (`JMP`), resulting i
 
 Let **M** denote the multiplier (loop count).
 
-**Dynamic Instruction Count**
+Dynamic Instruction Count: I(M) = 13M + 2
 
-```text
-DI(M) = 13M + 2
-```
+Clock Cycles: CC(M) = 33M + 5
 
-**Clock Cycles**
+Average CPI: CPI(M) = (33M + 5) / (13M + 2)
 
-```text
-CC(M) = 33M + 5
-```
-
-**Average CPI**
-
-```text
-CPI(M) = (33M + 5) / (13M + 2)
-```
-
-**Steady-State CPI**
-
-```text
-lim M→∞ CPI(M) = 33 / 13 ≈ 2.5385
-```
+Steady-State CPI: lim M→∞ CPI(M) = 33 / 13 ≈ 2.5385
 
 ### 2×2 Matrix Multiplication
 
