@@ -1,7 +1,7 @@
 0406 // LDB 0x06
 0308 // LDA 0x08
 2600 // PASS A 
-420E // JZ 0x0E 
+420D // JZ 0x0D 
 2100 // SUB    
 0508 // STA 0x08
 0309 // LDA 0x09
