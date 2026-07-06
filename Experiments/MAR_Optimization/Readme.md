@@ -145,13 +145,6 @@ Steady-State CPI:
 lim M→∞ CPI(M) = 256/104 ≈ 2.4615
 ```
 
-### Observations
-- Multiplication and matrix multiplication exhibit approximately linear growth in both dynamic instruction count and clock cycles as the workload increases.
-- The average CPI converges toward a constant value as fixed program initialization and termination overhead become negligible relative to the repeated computation.
-- The measured results closely match the analytically derived execution models:
-
-These baseline measurements serve as the reference for evaluating the performance impact of the proposed MAR optimization.
-
 ## Discussion
 
 *To be completed after implementation.*
