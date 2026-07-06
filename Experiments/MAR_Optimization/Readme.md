@@ -91,9 +91,9 @@ These observations should illustrate the practical implications of **Amdahl's La
 |-----------|------|-------------|-------------|-----------------|--------|
 | Maximum | A > B | 7 | 17 | | |
 | Maximum | B > A | 6 | 15 | | |
-| Multiplication | Small Workload | 10 × 5 | 67 | 170 | |
-| Multiplication | Medium Workload | 10 × 64 | 834 | 2117 | |
-| Multiplication | Maximum Workload | 10 × 255 | 3317 | 8420 | |
+| Multiplication | Small Workload: 10 × 5 | 67 | 170 | | |
+| Multiplication | Medium Workload: 10 × 64 | 834 | 2117 | | |
+| Multiplication | Maximum Workload: 10 × 255 | 3317 | 8420 | | |
 | Matrix Multiplication | Small Workload | | | | |
 | Matrix Multiplication | Medium Workload | | | | |
 | Matrix Multiplication | Maximum Workload | | | | |
