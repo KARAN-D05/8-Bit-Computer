@@ -107,7 +107,7 @@ The execution cost of each benchmark was analytically derived by manually tracin
 ### Maximum of Two Numbers
 
 | Case | Dynamic Instructions | Clock Cycles | CPI |
-|------|---------------------:|-------------:|----:|
+|------|---------------------|-------------|----|
 | A > B | 7 | 17 | 2.4286 |
 | B > A | 6 | 15 | 2.5000 |
 
@@ -146,18 +146,9 @@ lim M→∞ CPI(M) = 256/104 ≈ 2.4615
 ```
 
 ### Observations
-
 - Multiplication and matrix multiplication exhibit approximately linear growth in both dynamic instruction count and clock cycles as the workload increases.
 - The average CPI converges toward a constant value as fixed program initialization and termination overhead become negligible relative to the repeated computation.
 - The measured results closely match the analytically derived execution models:
-
-  Multiplication:
-  - DI(M) = 13M + 2
-  - CC(M) = 33M + 5
-
-  Matrix Multiplication:
-  - DI(M) = 104M + 21
-  - CC(M) = 256M + 58
 
 These baseline measurements serve as the reference for evaluating the performance impact of the proposed MAR optimization.
 
