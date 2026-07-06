@@ -98,6 +98,88 @@ These observations should illustrate the practical implications of **Amdahl's La
 | Matrix Multiplication | Medium Workload | | | | |
 | Matrix Multiplication | Maximum Workload | | | | |
 
+## Analytical Performance Models
+
+The execution cost of each benchmark was analytically derived by manually tracing the instruction flow and counting dynamic instructions and clock cycles.
+
+### Maximum of Two Numbers
+
+| Case | Dynamic Instructions | Clock Cycles | CPI |
+|------|---------------------:|-------------:|----:|
+| A > B | 7 | 17 | 2.4286 |
+| B > A | 6 | 15 | 2.5000 |
+
+The `A > B` path executes one additional unconditional jump (`JMP`), resulting in two extra clock cycles despite exhibiting a slightly lower CPI.
+
+### Unsigned Multiplication
+
+Let **M** denote the multiplier (loop count).
+
+**Dynamic Instruction Count**
+
+```text
+DI(M) = 13M + 2
+```
+
+**Clock Cycles**
+
+```text
+CC(M) = 33M + 5
+```
+
+**Average CPI**
+
+```text
+CPI(M) = (33M + 5) / (13M + 2)
+```
+
+**Steady-State CPI**
+
+```text
+lim M→∞ CPI(M) = 33 / 13 ≈ 2.5385
+```
+
+### 2×2 Matrix Multiplication
+
+Let **M** denote the common workload parameter where the loop-controlling matrix elements satisfy:
+
+```text
+A = B = C = D = M
+```
+
+The remaining matrix elements affect only the numerical result and do not influence execution time.
+
+**Dynamic Instruction Count**
+
+```text
+DI(M) = 104M + 21
+```
+
+**Clock Cycles**
+
+```text
+CC(M) = 256M + 58
+```
+
+**Average CPI**
+
+```text
+CPI(M) = (256M + 58) / (104M + 21)
+```
+
+**Steady-State CPI**
+
+```text
+lim M→∞ CPI(M) = 256 / 104 ≈ 2.4615
+```
+
+### Observations
+
+- Both multiplication and matrix multiplication exhibit linear growth in dynamic instruction count and clock cycles with increasing workload.
+- The constant terms represent fixed program initialization and termination overhead.
+- As the workload increases, the influence of this fixed overhead diminishes and the average CPI converges to a constant value determined by the loop body.
+- These analytical models were validated against RTL simulation before evaluating the MAR optimization.
+
 ## Discussion
 
 *To be completed after implementation.*
