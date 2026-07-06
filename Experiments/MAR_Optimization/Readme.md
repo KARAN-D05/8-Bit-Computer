@@ -87,20 +87,22 @@ These observations should illustrate the practical implications of **Amdahl's La
 
 *To be completed after implementation*
 
-| Benchmark | Case | Dynamic Instructions | Clock Cycles | Optimized Cycles | Speedup |
-|-----------|------|-------------|-------------|-----------------|--------|
-| Maximum | A > B | 7 | 17 | | |
-| Maximum | B > A | 6 | 15 | | |
-| Multiplication | Small Workload: 10 × 5 | 67 | 170 | | |
-| Multiplication | Medium Workload: 10 × 64 | 834 | 2117 | | |
-| Multiplication | Maximum Workload: 10 × 255 | 3317 | 8420 | | |
-| Matrix Multiplication | Small Workload | | | | |
-| Matrix Multiplication | Medium Workload | | | | |
-| Matrix Multiplication | Maximum Workload | | | | |
+## Baseline Performance Analysis
+
+| Benchmark | Workload | Dynamic Instructions | Clock Cycles | CPI |
+|-----------|----------|---------------------|-------------|----|
+| Maximum | A > B | 7 | 17 | 2.4286 |
+| Maximum | B > A | 6 | 15 | 2.5000 |
+| Multiplication | 10 × 5 | 67 | 170 | 2.5373 |
+| Multiplication | 10 × 64 | 834 | 2117 | 2.5383 |
+| Multiplication | 10 × 255 | 3317 | 8420 | 2.5384 |
+| Matrix Multiplication | M = 1 | 125 | 314 | 2.5120 |
+| Matrix Multiplication | M = 64 | 6677 | 16442 | 2.4625 |
+| Matrix Multiplication | M = 255 | 26541 | 65338 | 2.4617 |
 
 ## Analytical Performance Models
 
-The execution cost of each benchmark was analytically derived by manually tracing the instruction flow and counting dynamic instructions and clock cycles.
+The execution cost of each benchmark was analytically derived by manually tracing the instruction flow and counting dynamic instructions (DI) and clock cycles (CC). The resulting models were validated against RTL simulation.
 
 ### Maximum of Two Numbers
 
@@ -109,60 +111,55 @@ The execution cost of each benchmark was analytically derived by manually tracin
 | A > B | 7 | 17 | 2.4286 |
 | B > A | 6 | 15 | 2.5000 |
 
-The `A > B` path executes one additional unconditional jump (`JMP`), resulting in two extra clock cycles despite exhibiting a slightly lower CPI.
+The `A > B` execution path performs one additional unconditional `JMP`, requiring two extra clock cycles despite exhibiting a slightly lower CPI.
 
 ### Unsigned Multiplication
 
 Let **M** denote the multiplier (loop count).
 
-Dynamic Instruction Count: I(M) = 13M + 2
+```text
+DI(M)  = 13M + 2
+CC(M)  = 33M + 5
+CPI(M) = (33M + 5)/(13M + 2)
 
-Clock Cycles: CC(M) = 33M + 5
-
-Average CPI: CPI(M) = (33M + 5) / (13M + 2)
-
-Steady-State CPI: lim M→∞ CPI(M) = 33 / 13 ≈ 2.5385
+Steady-State CPI:
+lim M→∞ CPI(M) = 33/13 ≈ 2.5385
+```
 
 ### 2×2 Matrix Multiplication
 
-Let **M** denote the common workload parameter where the loop-controlling matrix elements satisfy:
+Let **M** denote the common workload parameter where:
 
 ```text
 A = B = C = D = M
 ```
 
-The remaining matrix elements affect only the numerical result and do not influence execution time.
-
-**Dynamic Instruction Count**
+The remaining matrix elements (`E`, `F`, `G`, `H`) influence only the numerical result and do not affect execution time.
 
 ```text
-DI(M) = 104M + 21
-```
+DI(M)  = 104M + 21
+CC(M)  = 256M + 58
+CPI(M) = (256M + 58)/(104M + 21)
 
-**Clock Cycles**
-
-```text
-CC(M) = 256M + 58
-```
-
-**Average CPI**
-
-```text
-CPI(M) = (256M + 58) / (104M + 21)
-```
-
-**Steady-State CPI**
-
-```text
-lim M→∞ CPI(M) = 256 / 104 ≈ 2.4615
+Steady-State CPI:
+lim M→∞ CPI(M) = 256/104 ≈ 2.4615
 ```
 
 ### Observations
 
-- Both multiplication and matrix multiplication exhibit linear growth in dynamic instruction count and clock cycles with increasing workload.
-- The constant terms represent fixed program initialization and termination overhead.
-- As the workload increases, the influence of this fixed overhead diminishes and the average CPI converges to a constant value determined by the loop body.
-- These analytical models were validated against RTL simulation before evaluating the MAR optimization.
+- Multiplication and matrix multiplication exhibit approximately linear growth in both dynamic instruction count and clock cycles as the workload increases.
+- The average CPI converges toward a constant value as fixed program initialization and termination overhead become negligible relative to the repeated computation.
+- The measured results closely match the analytically derived execution models:
+
+  Multiplication:
+  - DI(M) = 13M + 2
+  - CC(M) = 33M + 5
+
+  Matrix Multiplication:
+  - DI(M) = 104M + 21
+  - CC(M) = 256M + 58
+
+These baseline measurements serve as the reference for evaluating the performance impact of the proposed MAR optimization.
 
 ## Discussion
 
