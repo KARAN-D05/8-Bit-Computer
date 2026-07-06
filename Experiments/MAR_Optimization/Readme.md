@@ -145,6 +145,10 @@ Steady-State CPI:
 lim M→∞ CPI(M) = 256/104 ≈ 2.4615
 ```
 
+### Architectural Observation
+- Although the matrix multiplication benchmark is implemented using repeated-addition multiplication, its steady-state CPI is lower than the standalone multiplication benchmark. This is because the multiplication loops in matrix multiplication use immediate addressing to load the decrement constant (`LOAD B 0x01`) rather than loading it from memory (`LDB <addr>`). Eliminating one memory access per iteration reduces the loop execution cost from **33M** to **32M** clock cycles, demonstrating the performance advantage of immediate addressing in memory-intensive workloads.
+- As the workload increases, the dynamic instruction mix becomes dominated by the repeated loop body, causing the measured CPI to converge toward the loop's average CPI.
+
 ## Discussion
 
 *To be completed after implementation.*
