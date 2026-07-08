@@ -153,7 +153,7 @@ lim M→∞ CPI(M) = 256/104 ≈ 2.4615
 
 *To be completed after implementation.*
 
-Discussion will include:
+This will include:
 
 - Comparison between predicted and measured speedup.
 - Effect of memory intensity on overall performance.
