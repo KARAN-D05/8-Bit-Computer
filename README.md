@@ -112,6 +112,7 @@ This program implements unsigned 2×2 matrix multiplication entirely in software
 
 `Matmul.asm`
 ```asm
+; For brevity, the repeated-addition multiplication sequence is abstracted as multiply(x, y).
 
 multiply(0x00, 0x04)      ; Compute A×E
 STA 0x08                  ; Store AE
