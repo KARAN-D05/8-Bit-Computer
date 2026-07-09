@@ -103,6 +103,7 @@ This program implements unsigned 2×2 matrix multiplication entirely in software
      [ C  D ]       [ G  H ]           [ C10 = CE + DG  C11 = CF + DH ]
 ```
 
+`Memory Layout`
 | A | B | C | D | E | F | G | H | AE | BG |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:--:|:--:|
 | `0x00` | `0x01` | `0x02` | `0x03` | `0x04` | `0x05` | `0x06` | `0x07` | `0x08` | `0x09` |
