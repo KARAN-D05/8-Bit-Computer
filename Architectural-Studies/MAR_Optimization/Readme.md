@@ -8,7 +8,10 @@ This prompted the following question:
 
 > **Can the Memory Address Register (MAR) be removed from my multi-cycle processor without affecting correctness, and if so, how much performance improvement does it provide?**
 
-The completed 8-bit processor serves as an experimental platform to quantitatively evaluate this architectural modification.
+The completed processor serves as an experimental platform to quantitatively evaluate this architectural modification.
+
+The study combines architectural modification, analytical performance modeling, RTL simulation, and Amdahl's Law to quantitatively
+evaluate the performance impact of the proposed optimization.
 
 ## Background
 
@@ -42,19 +45,9 @@ Removing the Memory Address Register should:
 
 - Reduce the CPI of memory-related instructions.
 - Improve execution time for memory-intensive workloads.
-- Produce little improvement for programs containing relatively few memory operations.
+- Produce smaller overall speedups for programs spending a lower fraction of their execution time performing memory operations.
 
 According to **Amdahl's Law**, workloads spending more execution time performing memory accesses should experience greater overall speedup.
-
-## Methodology
-
-The following modifications will be implemented:
-
-- Remove the Memory Address Register.
-- Directly connect `IR[7:0]` to the RAM address input.
-- Update the Control Unit to remove the MAR load state.
-- Verify functional correctness using existing Cocotb verification infrastructure.
-- Re-run logic synthesis and static timing analysis.
 
 ## Benchmarks
 
@@ -95,6 +88,9 @@ These observations should illustrate the practical implications of **Amdahl's La
 | Matrix Multiplication | M = 1 | 125 | 314 | 2.5120 |
 | Matrix Multiplication | M = 64 | 6677 | 16442 | 2.4625 |
 | Matrix Multiplication | M = 255 | 26541 | 65338 | 2.4617 |
+
+These baseline measurements were subsequently used to derive analytical execution models, which later served as independent predictors
+for the optimized processor and were further validated using Amdahl's Law.
 
 ## Analytical Performance Models
 
@@ -142,7 +138,7 @@ lim M→∞ CPI(M) = 256/104 ≈ 2.4615
 ```
 
 ### Architectural Observation
-- Although the matrix multiplication benchmark is implemented using repeated-addition multiplication, its steady-state CPI is lower than the standalone multiplication benchmark. This is because the multiplication loops in matrix multiplication use immediate addressing to load the decrement constant (`LOAD B 0x01`) rather than loading it from memory (`LDB <addr>`). Eliminating one memory access per iteration reduces the loop execution cost from **33M** to **32M** clock cycles, demonstrating the performance advantage of immediate addressing in memory-intensive workloads.
+- Although the matrix multiplication benchmark is implemented using repeated-addition multiplication, its steady-state CPI is lower than the standalone multiplication benchmark. This is because the multiplication loops in matrix multiplication use immediate addressing to load the decrement constant (`LOAD B 0x01`) rather than loading it from memory (`LDB <addr>`). Eliminating one memory access per iteration reduces the loop execution cost from **33M** to **32M** clock cycles. This demonstrates how instruction addressing modes directly influence instruction mix, execution cost, and ultimately the overall CPI of a workload.
 - Overall CPI is a weighted average of the CPI of each execution phase, with the weights determined by the dynamic instruction mix. As the workload increases, the loop dominates the instruction mix, so the overall CPI always converges toward the loop CPI; whether it moves upward or downward depends on whether the loop CPI is greater or less than the initialization CPI.
 
 # Performance Analysis of MAR Optimization
@@ -241,6 +237,8 @@ where
 - Execution Time affected is the portion accelerated by the optimization.
 - Amount of Improvement(k) is the speedup of the accelerated portion.
 - Execution Time unaffected remains unchanged.
+
+The execution time affected refers to the original execution time spent in the accelerated portion of the program, not merely the number of clock cycles eliminated by the optimization. Correctly identifying this accelerated fraction proved essential for reconciling the analytical models with Amdahl's Law.
 
 For this optimization,
 
@@ -420,3 +418,17 @@ which matches simulation and experimental measurements.
 - Both forms of Amdahl's Law (execution-time form and speedup form) independently reproduced the optimized execution-time models, providing an additional validation of the analytical models and architectural optimization.
 - The absolute number of clock cycles saved increased dramatically with workload, experimentally demonstrating Amdahl's principle that optimizations affecting frequently executed portions of a program provide increasingly larger absolute performance gains.
 - Although matrix multiplication is composed of repeated multiplication kernels, it achieves a lower relative speedup (≈1.231×) than standalone multiplication (≈1.269×). This is because a smaller fraction of its total execution time is spent executing memory instructions, reducing the proportion of execution affected by the optimization.
+
+```
+Initially, the matrix multiplication benchmark was expected to exhibit the greatest relative speedup because it repeatedly invokes the multiplication kernel and performs substantially more memory accesses than the standalone multiplication benchmark.
+
+However, analysis revealed that the benchmark also performs additional accumulation, control, and data movement operations that are unaffected by the MAR optimization. Consequently, a smaller fraction of the total execution time is accelerated, reducing the overall speedup despite achieving significantly larger absolute clock cycle savings.
+
+This observation illustrates Amdahl's Law: the overall speedup depends on the fraction of execution time affected by an optimization rather than the absolute amount of computation performed.
+
+An interesting implication of this study is that if the standalone multiplication benchmark were similarly modified to use immediate addressing for loading the decrement constant, its baseline execution model would reduce from 33M + 5 to approximately 32M + 5 clock cycles. This would decrease the fraction of execution time affected by the MAR optimization, suggesting that its relative speedup would also decrease, potentially approaching that of the matrix multiplication benchmark. This highlights that Amdahl's Law depends on the proportion of execution time affected by an optimization rather than the computational complexity of the benchmark itself.
+```
+
+## Conclusion
+
+This study demonstrates a complete architecture optimization workflow: identifying a datapath bottleneck, developing analytical execution models, implementing the architectural modification in RTL, experimentally validating the resulting performance, and independently verifying the observations using Amdahl's Law. Beyond quantifying the performance impact of removing the Memory Address Register, the study illustrates how analytical performance models can reveal architectural properties, recover dynamic instruction composition, and provide quantitative insight into processor behavior.
