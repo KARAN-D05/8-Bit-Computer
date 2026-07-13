@@ -100,6 +100,9 @@ DONE:
 ## 🔢 2×2 Matrix Multiplication
 
 This program implements unsigned 2×2 matrix multiplication entirely in software using the custom ISA. It is built by invoking multiplication kernel 8 times, followed by additions to combine the partial products. The input matrices are stored in RAM locations `0x00-0x03` and `0x04-0x07`, while the resulting matrix is written to `0x10-0x13`. 
+
+> Multiplication Kernel is the central computational routine that performs the dominant computation and is executed repeatedly.
+
 ```
  A = [ A  B ]   B = [ E  F ]   A × B = [ C00 = AE + BG  C01 = AF + BH ]
      [ C  D ]       [ G  H ]           [ C10 = CE + DG  C11 = CF + DH ]
@@ -114,7 +117,7 @@ This program implements unsigned 2×2 matrix multiplication entirely in software
 
 `Matmul.asm`
 ```asm
-; For brevity, the multiplication Kernel is abstracted as multiply(x, y).
+; For brevity, the multiplication kernel is abstracted as multiply(x, y).
 
 ; Compute C00 = A×E + B×G
 multiply(0x00, 0x04)      ; Compute A×E
@@ -186,7 +189,7 @@ A = [07 09]   B = [02 03]   A × B = [3B 54]
 
 The processor was evaluated using three benchmark programs: Maximum of Two Numbers, Unsigned Multiplication, and 2×2 Matrix Multiplication.
 
-An architectural optimization eliminating the Memory Address Register (MAR) reduced all memory instructions from **3 T-states** to **2 T-states**, resulting in a uniform **2-cycle instruction execution** across the ISA.
+An architectural optimization eliminating the Memory Address Register (MAR) increased the proportion of the ISA executing in 2 T-states from 84% to 100%, resulting in a uniform **2-cycle instruction execution** across the ISA.
 
 | Benchmark | Maximum Speedup | Maximum Clock Cycles Saved |
 |-----------|----------------|---------------------------|
