@@ -55,7 +55,7 @@ END:
   <sub>RTL simulation of the processor executing the Maximum of Two Numbers program, illustrating instruction fetch, ALU computation, memory operations, and control flow .</sub>
 </p>
 
-## ✖️ Integer Multiplication
+## ✖️ Multiplication Kernel
 
 This program multiplies two unsigned 8-bit values using repeated addition. The multiplicand is stored in RAM address `0x07` and the multiplier stored in RAM address `0x08` acts as the loop counter. A constant value of 1 is stored in RAM address `0x06` for decrementing the counter, and the accumulated product is written to RAM address `0x09`.
 
@@ -99,7 +99,7 @@ DONE:
 
 ## 🔢 2×2 Matrix Multiplication
 
-This program implements unsigned 2×2 matrix multiplication entirely in software using the custom ISA. The input matrices are stored in RAM locations `0x00-0x03` and `0x04-0x07`, while the resulting matrix is written to `0x10-0x13`. 
+This program implements unsigned 2×2 matrix multiplication entirely in software using the custom ISA. The input matrices are stored in RAM locations `0x00-0x03` and `0x04-0x07`, while the resulting matrix is written to `0x10-0x13`. It is built by invoking multiplication kernel 8 times, followed by additions to combine the partial products.
 ```
  A = [ A  B ]   B = [ E  F ]   A × B = [ C00 = AE + BG  C01 = AF + BH ]
      [ C  D ]       [ G  H ]           [ C10 = CE + DG  C11 = CF + DH ]
