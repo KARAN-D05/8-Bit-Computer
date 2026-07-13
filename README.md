@@ -99,7 +99,7 @@ DONE:
 
 ## 🔢 2×2 Matrix Multiplication
 
-This program implements unsigned 2×2 matrix multiplication entirely in software using the custom ISA. The input matrices are stored in RAM locations `0x00-0x03` and `0x04-0x07`, while the resulting matrix is written to `0x10-0x13`. It is built by invoking multiplication kernel 8 times, followed by additions to combine the partial products.
+This program implements unsigned 2×2 matrix multiplication entirely in software using the custom ISA. It is built by invoking multiplication kernel 8 times, followed by additions to combine the partial products. The input matrices are stored in RAM locations `0x00-0x03` and `0x04-0x07`, while the resulting matrix is written to `0x10-0x13`. 
 ```
  A = [ A  B ]   B = [ E  F ]   A × B = [ C00 = AE + BG  C01 = AF + BH ]
      [ C  D ]       [ G  H ]           [ C10 = CE + DG  C11 = CF + DH ]
@@ -114,7 +114,7 @@ This program implements unsigned 2×2 matrix multiplication entirely in software
 
 `Matmul.asm`
 ```asm
-; For brevity, the multiplication sequence is abstracted as multiply(x, y).
+; For brevity, the multiplication Kernel is abstracted as multiply(x, y).
 
 ; Compute C00 = A×E + B×G
 multiply(0x00, 0x04)      ; Compute A×E
