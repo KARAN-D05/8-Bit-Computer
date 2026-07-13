@@ -188,7 +188,12 @@ DI(M) = 13M + 2
 - Consequently, the optimized processor exhibits a constant average CPI of:
 
 ```text
-CPI(M) = (26M + 4) / (13M + 2) = 2
+CC(M) = 26M + 4
+DI(M) = 13M + 2
+CPI(M) = (26M + 4) / (13M + 2)
+
+Steady-State CPI:
+lim M→∞ CPI(M) = 26/13 = 2
 ```
 
 for all workloads.
@@ -206,18 +211,3 @@ for all workloads.
 - Although the **absolute number of cycles saved increased with workload**, the **relative speedup remained nearly constant (≈1.269×, 21.2% execution time reduction)** because both the original and optimized execution times scale linearly with the workload.
 
 - These results experimentally demonstrate **Amdahl's Law**. As the workload increases, the optimized portion of the program is exercised more frequently, producing substantially larger **absolute performance gains** while maintaining a nearly constant proportional improvement.
-
-## Discussion
-
-*To be completed after implementation.*
-
-This will include:
-
-- Comparison between predicted and measured speedup.
-- Effect of memory intensity on overall performance.
-- Architectural trade-offs introduced by removing the MAR.
-- Whether the optimization justifies the additional hardware simplification.
-
-## Conclusion
-
-*To be completed after implementation.*
