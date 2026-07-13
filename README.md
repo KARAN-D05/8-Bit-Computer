@@ -101,8 +101,6 @@ DONE:
 
 This program implements unsigned 2×2 matrix multiplication entirely in software using the custom ISA. It is built by invoking multiplication kernel 8 times, followed by additions to combine the partial products. The input matrices are stored in RAM locations `0x00-0x03` and `0x04-0x07`, while the resulting matrix is written to `0x10-0x13`. 
 
-> Multiplication Kernel is the central computational routine that performs the dominant computation and is executed repeatedly.
-
 ```
  A = [ A  B ]   B = [ E  F ]   A × B = [ C00 = AE + BG  C01 = AF + BH ]
      [ C  D ]       [ G  H ]           [ C10 = CE + DG  C11 = CF + DH ]
