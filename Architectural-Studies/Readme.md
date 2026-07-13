@@ -1,5 +1,5 @@
 # Architectural Studies
-This folder records architectural studies performed on the completed 8-bit processor. The objective is not to redesign the processor, but to investigate the quantitative effect of a specific microarchitectural optimization.
+This folder records architectural studies performed on the completed processor. The objective is not to redesign the processor, but to investigate the quantitative effect of a specific microarchitectural optimization.
 
 ---
 
