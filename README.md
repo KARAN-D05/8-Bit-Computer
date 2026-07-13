@@ -195,7 +195,7 @@ An architectural optimization eliminating the Memory Address Register (MAR) incr
 | Unsigned Multiplication | 1.269× | 1786 |
 | 2×2 Matrix Multiplication | 1.231× | 12256 |
 
-Detailed analytical performance models, Amdahl's Law validation, workload analysis, and experimental methodology are documented in the [Architectural Studies](Architectural-Studies) folder.
+Detailed analytical performance models, Amdahl's Law validation, workload analysis, and experimental methodology are documented in the [Architectural Studies](Architectural-Studies/MAR_Optimization) folder.
 
 ## 🔬 Physical Characterization
 
