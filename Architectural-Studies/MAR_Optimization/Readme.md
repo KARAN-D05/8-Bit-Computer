@@ -83,10 +83,6 @@ The **Matrix Multiplication** benchmark is expected to demonstrate the greatest 
 
 These observations should illustrate the practical implications of **Amdahl's Law**, showing that architectural optimizations provide benefits proportional to the fraction of execution time affected by the optimization.
 
-## Results
-
-*To be completed after implementation*
-
 ## Baseline Performance Analysis
 
 | Benchmark | Workload | Dynamic Instructions | Clock Cycles | CPI |
@@ -148,6 +144,68 @@ lim M→∞ CPI(M) = 256/104 ≈ 2.4615
 ### Architectural Observation
 - Although the matrix multiplication benchmark is implemented using repeated-addition multiplication, its steady-state CPI is lower than the standalone multiplication benchmark. This is because the multiplication loops in matrix multiplication use immediate addressing to load the decrement constant (`LOAD B 0x01`) rather than loading it from memory (`LDB <addr>`). Eliminating one memory access per iteration reduces the loop execution cost from **33M** to **32M** clock cycles, demonstrating the performance advantage of immediate addressing in memory-intensive workloads.
 - Overall CPI is a weighted average of the CPI of each execution phase, with the weights determined by the dynamic instruction mix. As the workload increases, the loop dominates the instruction mix, so the overall CPI always converges toward the loop CPI; whether it moves upward or downward depends on whether the loop CPI is greater or less than the initialization CPI.
+
+## MAR Optimization Results
+
+The baseline architecture employed a Memory Address Register (MAR), requiring memory instructions to execute in **3 T-states**. By directly interfacing `IR[7:0]` with the RAM address bus, the MAR was eliminated, reducing all memory instructions to **2 T-states** while preserving functional correctness.
+
+### Maximum of Two Numbers
+
+| Case | Original CC | Optimized CC | Cycles Saved | Speedup | Execution Time Reduction |
+|------|------------|-------------|-------------|---------|-------------------------|
+| A > B | 17 | 14 | 3 | 1.214× | 17.65% |
+| B > A | 15 | 12 | 3 | 1.250× | 20.00% |
+
+### Unsigned Multiplication
+
+| Workload | Multiplier (M) | Original CC | Optimized CC | Cycles Saved | Speedup | Execution Time Reduction |
+|---------|---------------|------------|-------------|-------------|---------|-------------------------|
+| Small | 5 | 170 | 134 | 36 | 1.269× | 21.18% |
+| Medium | 64 | 2117 | 1668 | 449 | 1.269× | 21.21% |
+| Maximum | 255 | 8420 | 6634 | 1786 | 1.269× | 21.21% |
+
+## Observations
+
+- Removing the Memory Address Register (MAR) reduced every memory instruction from **3 T-states** to **2 T-states**, resulting in a uniform **2 T-state instruction execution** across the ISA.
+- The multiplication benchmark execution model changed from:
+
+```text
+CC(M) = 33M + 5
+```
+
+to
+
+```text
+CC(M) = 26M + 4
+```
+
+while the dynamic instruction count remained unchanged:
+
+```text
+DI(M) = 13M + 2
+```
+
+- Consequently, the optimized processor exhibits a constant average CPI of:
+
+```text
+CPI(M) = (26M + 4) / (13M + 2) = 2
+```
+
+for all workloads.
+
+- The absolute number of clock cycles saved increased substantially with workload:
+
+| Workload | Cycles Saved |
+|----------|-------------:|
+| Small | 36 |
+| Medium | 449 |
+| Maximum | 1786 |
+
+- The maximum workload saved **49.6×** more clock cycles than the small workload, while the medium workload saved **12.5×** more cycles than the small workload.
+
+- Although the **absolute number of cycles saved increased with workload**, the **relative speedup remained nearly constant (≈1.269×, 21.2% execution time reduction)** because both the original and optimized execution times scale linearly with the workload.
+
+- These results experimentally demonstrate **Amdahl's Law**. As the workload increases, the optimized portion of the program is exercised more frequently, producing substantially larger **absolute performance gains** while maintaining a nearly constant proportional improvement.
 
 ## Discussion
 
