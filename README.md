@@ -1,4 +1,4 @@
-# Multi-Cycle Harvard Processor
+# <img align=center width=75px  src="https://media0.giphy.com/media/idjnnqxEInAPn8elMd/giphy.gif?cid=790b761139e83663458cbb2b9508ae1ad8b5f85fab058fe7&rid=giphy.gif&ct=s" Multi-Cycle Harvard Processor
 The processor follows a **Harvard architecture** with separate program and data memories, a custom Instruction Set Architecture (ISA), a **hardwired control unit**, and a **multiplexer-based internal data bus** for datapath communication.
 
 > Demonstrated at 8-bit but configurable to any data width at instantiation.
