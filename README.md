@@ -183,20 +183,6 @@ A = [07 09]   B = [02 03]   A × B = [3B 54]
 <sub>Waveform showing execution of the software-based 2×2 matrix multiplication program. The final values loaded into the A and B registers correspond to the computed output matrix stored at RAM locations <code>0x10</code>-<code>0x13</code>.</sub>
 </p>
 
-## 📊 Performance Evaluation
-
-The processor was evaluated using three benchmark programs: Maximum of Two Numbers, Unsigned Multiplication, and 2×2 Matrix Multiplication.
-
-An architectural optimization eliminating the Memory Address Register (MAR) increased the proportion of the ISA executing in 2 T-states from 84% to 100%, resulting in a uniform **2-cycle instruction execution** across the ISA.
-
-| Benchmark | Maximum Speedup | Maximum Clock Cycles Saved |
-|-----------|----------------|---------------------------|
-| Maximum | 1.250× | 3 |
-| Unsigned Multiplication | 1.269× | 1786 |
-| 2×2 Matrix Multiplication | 1.231× | 12256 |
-
-Detailed analytical performance models, Amdahl's Law validation, workload analysis, and experimental methodology are documented in the [Architectural Studies](Architectural-Studies/MAR_Optimization) folder.
-
 ## 🔬 Physical Characterization
 
 The following table summarizes post-synthesis implementation results obtained using the Sky130 HD standard-cell library.
@@ -219,6 +205,20 @@ Timing results correspond to constrained static timing analysis using a 10 ns cl
 | [Computer](Computer) | 80347.06 µm² | 25.55 ns | ~39 MHz | 8.67 mW |
 
 > Note: The reported RAM area and timing correspond to a behavioral Verilog memory synthesized entirely using Sky130 HD standard cells. Since no dedicated SRAM macro was used, the memory is implemented using flip-flops and associated decode/multiplexing logic, making it the dominant contributor to overall chip area and critical path delay.
+
+## 📊 Performance Evaluation
+
+The processor was evaluated using three benchmark programs: Maximum of Two Numbers, Unsigned Multiplication, and 2×2 Matrix Multiplication.
+
+An architectural optimization eliminating the Memory Address Register (MAR) increased the proportion of the ISA executing in 2 T-states from 84% to 100%, resulting in a uniform **2-cycle instruction execution** across the ISA.
+
+| Benchmark | Maximum Speedup | Maximum Clock Cycles Saved |
+|-----------|----------------|---------------------------|
+| Maximum | 1.250× | 3 |
+| Unsigned Multiplication | 1.269× | 1786 |
+| 2×2 Matrix Multiplication | 1.231× | 12256 |
+
+Detailed analytical performance models, Amdahl's Law validation, workload analysis, and experimental methodology are documented in the [Architectural Studies](Architectural-Studies/MAR_Optimization) folder.
 
 ## 🔍 Verification
 
