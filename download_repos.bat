@@ -20,10 +20,10 @@ echo ============================================
 echo   KARAN-D05  ^|  Repository Downloader
 echo ============================================
 echo.
-echo   1.  Feedback-Driven Stored-Program System
+echo   1.  Feedback-Driven-Stored-Program-System
 echo   2.  Assembler
-echo   3.  Gate-Level Cybernetic Classifier
-echo   4.  Harvard Processor
+echo   3.  Gate-Level-Cybernetic-Classifier
+echo   4.  Harvard-Processor
 echo   5.  Artificial-Neuron
 echo   A.  Download ALL repos
 echo   Q.  Quit
