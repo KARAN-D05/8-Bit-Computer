@@ -218,12 +218,12 @@ An architectural optimization eliminating the Memory Address Register (MAR) incr
 | Unsigned Multiplication | 1.269× | 1786 |
 | 2×2 Matrix Multiplication | 1.231× | 12256 |
 
-### Post-Synthesis Evaluation
+### 🧪 Post-Synthesis Evaluation
 
 The optimized processor was synthesized using the Sky130 HD standard cell library and compared against the baseline implementation.
 
 | Metric | Baseline | Optimized | Change |
-|:-------|---------:|----------:|-------:|
+|-------|---------|----------|-------|
 | Area | 80347.06 µm² | 80091.81 µm² | **-0.32%** |
 | Critical Path | 25.55 ns | 25.65 ns | **Essentially Unchanged** |
 | Maximum Frequency | ~39 MHz | ~39 MHz | **Unchanged** |
@@ -232,13 +232,13 @@ The optimized processor was synthesized using the Sky130 HD standard cell librar
 
 > The optimization therefore represents a favorable architectural trade-off: a negligible impact on physical implementation (area, timing, and power) in exchange for substantial reductions in execution cycles and up to 1.269× speedup on memory-intensive workloads.
 
-### Observation
+### 📝 Observation
 
-- Removing the Memory Address Register (MAR) produced a modest reduction in silicon area and power while leaving the processor's critical path and maximum operating frequency essentially unchanged. Since the MAR was not part of the critical timing path, eliminating it primarily reduced the latency of memory instructions rather than increasing the clock frequency.
+Removing the Memory Address Register (MAR) produced a modest reduction in silicon area and power while leaving the processor's critical path and maximum operating frequency essentially unchanged. Since the MAR was not part of the critical timing path, eliminating it primarily reduced the latency of memory instructions rather than increasing the clock frequency.
 
-- Consequently, the optimization preserves the processor's physical implementation characteristics while substantially improving architectural performance. Memory-intensive workloads execute with significantly fewer clock cycles—saving thousands of cycles for larger benchmarks—without requiring additional hardware resources or sacrificing operating frequency.
+Consequently, the optimization preserves the processor's physical implementation characteristics while substantially improving architectural performance. Memory-intensive workloads execute with significantly fewer clock cycles—saving thousands of cycles for larger benchmarks—without requiring additional hardware resources or sacrificing operating frequency.
 
-- Detailed analytical performance models, Amdahl's Law validation, workload analysis, and experimental methodology are documented in the [Architectural Studies](Architectural-Studies/MAR_Optimization) folder.
+Detailed analytical performance models, Amdahl's Law validation, workload analysis, and experimental methodology are documented in the [Architectural Studies](Architectural-Studies/MAR_Optimization) folder.
 
 ## 🔍 Verification
 
