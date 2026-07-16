@@ -236,7 +236,7 @@ The optimized processor was synthesized using the Sky130 HD standard cell librar
 
 Removing the Memory Address Register (MAR) produced a modest reduction in silicon area and power while leaving the processor's critical path and maximum operating frequency essentially unchanged. Since the MAR was not part of the critical timing path, eliminating it primarily reduced the latency of memory instructions rather than increasing the clock frequency.
 
-Consequently, the optimization preserves the processor's physical implementation characteristics while substantially improving architectural performance. Memory-intensive workloads execute with significantly fewer clock cycles—saving thousands of cycles for larger benchmarks—without requiring additional hardware resources or sacrificing operating frequency.
+Consequently, the optimization preserves the processor's physical implementation characteristics while substantially improving architectural performance. Memory-intensive workloads execute with significantly fewer clock cycles saving thousands of cycles for larger benchmarks without requiring additional hardware resources or sacrificing operating frequency.
 
 Detailed analytical performance models, Amdahl's Law validation, workload analysis, and experimental methodology are documented in the [Architectural Studies](Architectural-Studies/MAR_Optimization) folder.
 
