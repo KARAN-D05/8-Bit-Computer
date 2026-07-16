@@ -218,6 +218,8 @@ An architectural optimization eliminating the Memory Address Register (MAR) incr
 | Unsigned Multiplication | 1.269× | 1786 |
 | 2×2 Matrix Multiplication | 1.231× | 12256 |
 
+> Removing the Memory Address Register reduced processor area by approximately 255 µm² and slightly reduced total power consumption, while leaving the critical timing path essentially unchanged. This indicates that the optimization primarily improves architectural performance by reducing instruction latency rather than by shortening the processor's critical path.
+
 Detailed analytical performance models, Amdahl's Law validation, workload analysis, and experimental methodology are documented in the [Architectural Studies](Architectural-Studies/MAR_Optimization) folder.
 
 ## 🔍 Verification
