@@ -236,9 +236,8 @@ DONE:
 
 > This program demonstrates that higher-level mathematical algorithms can be implemented entirely in software using a minimal instruction set consisting of arithmetic, memory operations, conditional branching, loops, and processor status flags.
 
-```
-√FF(255)= floor(15.9687) = 0F(15)
-```
+
+`√FF(255)= floor(15.9687) = 0F(15)`
 
 <p align="center">
   <img src="Computer/images/sqrt_waveform.png" width="1000">
