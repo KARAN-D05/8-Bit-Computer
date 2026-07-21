@@ -239,7 +239,7 @@ DONE:
 ```
 
 <p align="center">
-  <img src="Computer/images/Sqrt_waveform.png" width="1000">
+  <img src="Computer/images/sqrt_waveform.png" width="1000">
 </p>
 
 <p align="center">
