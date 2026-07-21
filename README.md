@@ -189,6 +189,9 @@ This program computes the integer square root of an unsigned 8-bit number. The c
 
 `Sqrt.asm`
 ```asm
+    LOAD B 0x01       ; Load Constant 1
+    STB 0x00          ; Initialize i
+
 START:
     LDB 0x00          ; Load current i
     STB 0x03          ; Save current i
