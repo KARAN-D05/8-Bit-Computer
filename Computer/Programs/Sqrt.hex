@@ -1,32 +1,32 @@
-0400 // LDB 0x00 (Load i)
-0603 // STB 0x03 (Store i at 0x03)
-0201 // LOAD B 0x01 (Constant 1)
-0300 // LDA 0x00 (Load i)
-2100 // SUB (Decrement Multiplier) 
-0500 // STA 0x00 (Store i-1 at 0x00)
-0302 // LDA 0x02 (Load Accumulated Result)
-0403 // LDB 0x03 (Load i) 
-2000 // ADD (N + 0x02)  
-411A // JC 0x1A (Jumpt to store i - 1 if Carry is produced) 
-0502 // STA 0x02 (Store Accumulated Result)
-0300 // LDA 0x00 (Load Multiplier) 
-2600 // PASS A (Check is i is Zero)
-4802 // JNZ 0x02 (Jump to 0x02 if Multipler != 0)
-0302 // LDA 0x02 (Load Result from 0x02)
-0404 // LDB 0x04 (Load N from 0x04 )
-2600 // PASS A (Update Flags)
-431E // JEQ 0x1E (Current i is the Answer)
-441A // JGT 0x1A (Previous i is the answer)
-0403 // LDB 0x03 (Load i from 0x03)
-0101 // Load A 0x01 (Load Constant 1)
-2000 // ADD (i + 1)
-0500 // STA 0x00 (Store i + 1 at 0x00)
-0100 // LOAD A 0x00 (Load A with 0x00)
-0502 // STA 0x02 (Clear the Accumulator)
-4000 // JMP 0x00 (Jump to 0x00)
-0303 // LDA 0x03 (Load A with i such i*i > N)
-0201 // LOAD B 0x01 (Load Constant 1)
-2100 // SUB ( if i*i > N then sqrt(N) = i - 1)
-0503 // STA 0x03 (Store A at 0x03)
+0400 // LDB 0x00 
+0603 // STB 0x03
+0201 // LOAD B 0x01 
+0300 // LDA 0x00 
+2100 // SUB
+0500 // STA 0x00 
+0302 // LDA 0x02 
+0403 // LDB 0x03 
+2000 // ADD 
+411A // JC 0x1A 
+0502 // STA 0x02 
+0300 // LDA 0x00 
+2600 // PASS A
+4802 // JNZ 0x02 
+0302 // LDA 0x02
+0404 // LDB 0x04 
+2600 // PASS A 
+431E // JEQ 0x1E 
+441A // JGT 0x1A
+0403 // LDB 0x03 
+0101 // Load A 0x01 
+2000 // ADD 
+0500 // STA 0x00 
+0100 // LOAD A 0x00
+0502 // STA 0x02
+4000 // JMP 0x00 
+0303 // LDA 0x03 
+0201 // LOAD B 0x01
+2100 // SUB 
+0503 // STA 0x03
 0303 // LDA 0x03
 4900 // HLT
