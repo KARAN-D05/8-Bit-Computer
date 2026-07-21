@@ -199,7 +199,7 @@ START:
     STB 0x03          ; Save current i
 
 MULTIPLY:
-    L0AD B 0x01       ; Load constant 1
+    LOAD B 0x01       ; Load constant 1
     LDA 0x00          ; Load multiplier
     SUB               ; Decrement multiplier
     STA 0x00          ; Store updated multiplier
@@ -219,16 +219,16 @@ MULTIPLY:
     JGT PREVIOUS      ; i² > N
 
     LDB 0x03          ; Load current i
-    L0AD A 0x01       ; Load constant 1
+    LOAD A 0x01       ; Load constant 1
     ADD               ; i = i + 1
     STA 0x00          ; Store next candidate
-    L0AD A 0x00       ; Load constant 0
+    LOAD A 0x00       ; Load constant 0
     STA 0x02          ; Clear square accumulator
     JMP START         ; Repeat
 
 PREVIOUS:
     LDA 0x03          ; Load current i
-    L0AD B 0x01       ; Load constant 1
+    LOAD B 0x01       ; Load constant 1
     SUB               ; Compute i - 1
     STA 0x03          ; Store answer
 
